@@ -44,10 +44,11 @@
          </div>
          <button type="button" class="btn btn-success mt-5" onclick="js:begin()">시작하기</button>
       </section>
-
+<<<<<<< HEAD
       <section id="qna">
          <div class="status mx-auto mt-5">
             <div class="statusBar">
+=======
      <section id=  "result" class="mx-auto my-5 py-5 px-3">
         <div class="title_1">
             <h1>검사 결과</h1>
@@ -110,6 +111,7 @@
             <div class="total_result">
                연간 총 CO2 배출량 : 000kg <br>
                필요 소나무 : 000그루
+>>>>>>> 7222f9e0533420fbf3060c595aa1c09c78bc7d63
             </div>
          </div>
          <div class="qBox my-5 py-3 mx-auto">
