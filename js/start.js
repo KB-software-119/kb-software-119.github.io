@@ -29,6 +29,35 @@ const select = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // 사용자가 버튼 추�
 //   resultDesc.innerHTML = infoList[point].desc;
 // }
 
+
+function calResource(){
+  //10번 문항 : 종이청구서
+  var target10 = qnaList[12].a[select[12]];
+  var ans10 = Math.round(target10.data[0]*2.8 * 10) / 10; //결과값 소수 첫번째자리까지만 표기하도록 반올림
+  console.log("종이청구서로 발생하는 이산화탄소 : ",ans10,"g");
+
+  //11번 문항 : 샤워시간
+  var target11 = qnaList[13].a[select[13]];
+  var ans11 = Math.round(target11.data[0]*74  * 10) / 10;
+  console.log("샤워시간으로 발생하는 이산화탄소 : ",ans11,"g");
+  
+  //12번 문항 : 음식물 쓰레기 배출
+  var target12 = qnaList[14].a[select[14]];
+  var ans12 = Math.round(target12.data[0]*3300 * 10) / 10;
+  console.log("음식물 쓰레기 배출로 발생하는 이산화탄소 : ",ans12,"g");
+
+  //13번 문항 : 배달음식 주문 횟수
+  var target13 = qnaList[15].a[select[15]];
+  var ans13 = Math.round(target13.data[0]*0.15 * 10) / 10;
+  console.log("배달음식 주문 횟수에 따라 발생하는 이산화탄소 : ",ans13,"g");
+
+  //자원분야 연간 CO2배출량 및 필요 소나무 계산
+  var resource_result = Math.round((ans10*12+ans11*243+ans12*52+ans13*52)/1000 *10) / 10;
+  console.log("자원분야 1년간 이산화탄소 배출량 : ",resource_result,"kg");
+  var need_tree = Math.round(resource_result/6.6 * 10 / 10); //이산화 탄소 배출량 6.6kg당 필요 소나무 1그루
+  console.log("필요한 소나무 : ",need_tree,"그루");
+}
+
 function goResult(){
   qna.style.WebkitAnimation = "fadeOut 1s";
   qna.style.animation = "fadeOut 1s";
