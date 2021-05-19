@@ -119,6 +119,51 @@ function calTraffic(){
     연간 평균 %fkg의 Co2를 저감하며 %f그루의 나무를 아낄 수 있습니다", freq-2.5, freq+2.5, result, total_tree);
 }
 
+
+function calElectricity(){
+
+  var target = []
+  var ans=[]
+
+  for (var i=8; i<12; i++){
+    target.push(qnaList[i].a[select[i]]);
+  }
+
+
+  //6번 문항 : TV 시청 시간
+  ans[0] = Math.round(target[0].data[0]*150)/10; // 전력량
+  ans[0] = ans[0] *7; // 일주일로 계산하기위해
+  console.log("TV 시청 시간에 따라 발생하는 이산화탄소 : ",ans[0]/2,"kg")
+
+  //7번 문항 : 컴퓨터 사용 시간
+  ans[1] = Math.round(target[1].data[0]*255.9)/10; // 전력량
+  ans[0] = ans[0] *7; // 일주일로 계산하기위해
+  console.log("컴퓨터 사용 시간에 따라 발생하는 이산화탄소 : ",ans[1]/2,"kg")
+
+  //8번 문항 : 세탁기 사용 횟수
+  ans[2] = Math.round(target[2].data[0]*242.8)/10; // 전력량
+  console.log("세탁기 사용 횟수에 따라 발생하는 이산화탄소 : ",ans[2]/2,"kg")
+
+
+  //9번 문항 : 외출시 플러그 뽑는지 o/x
+  
+
+
+  //전기분야 연간 CO2배출량 및 필요 소나무 계산
+  var elec_result = 0;
+  
+  for (var i=0; i<3; i++){
+    elec_result += ans[i]/2;
+  }
+
+  //var resource_result = Math.round((ans10*12+ans11*243+ans12*52+ans13*52)/1000 *10) / 10;
+  console.log("전기분야 1주일 간 이산화탄소 배출량 : ",elec_result,"kg");
+  var need_tree = Math.round(elec_result/5); //이산화 탄소 배출량 0.5kg당 필요 소나무 0.1그루
+  console.log("사용한 전기 때문에 필요한 소나무 : ",need_tree,"그루");
+}
+
+
+
 function calResource(){
   //10번 문항 : 종이청구서
   var target10 = qnaList[12].a[select[12]];
@@ -160,6 +205,7 @@ function goResult(){
       result.style.display = "block"
     }, 450)})
     calTraffic();
+    calElectricity();
     calResource();
 }
 
