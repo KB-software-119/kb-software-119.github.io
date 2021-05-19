@@ -79,7 +79,7 @@ function addAnswer(answerText, qIdx, idx){
         goNext(qIdx);
       }
       else if(qIdx==5 && select[qIdx]==0){ // 에어컨을 사용하지 않는 경우 에어컨 온도 질문 뛰어넘기
-        qIdx+=1;
+        qIdx+=2;
         goNext(qIdx);
       }
       else
