@@ -58,6 +58,8 @@ function calResource(){
   console.log("필요한 소나무 : ",need_tree,"그루");
 }
 
+
+
 function goResult(){
   qna.style.WebkitAnimation = "fadeOut 1s";
   qna.style.animation = "fadeOut 1s";

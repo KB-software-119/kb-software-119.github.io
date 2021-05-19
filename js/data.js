@@ -76,38 +76,38 @@ const qnaList = [
     {
       q: '6. 하루에 TV를 몇 시간 정도 시청하나요?',
       a: [
-        { answer: 'TV 시청을 하지 않는다', type: ['sheep', 'mouse', 'snake', 'chick' ] },
-        { answer: '0시간 이상 3시간 미만', type: ['cow', 'rabbit', 'horse', 'pig' ] },
-        { answer: '3시간 이상 6시간 미만', type: ['tiger', 'dog', 'monkey', 'dragon' ] },
-        { answer: '6시간 이상 9시간 미만', type: ['tiger', 'dog', 'monkey', 'dragon' ] },
-        { answer: '9시간 이상 12시간 미만', type: ['tiger', 'dog', 'monkey', 'dragon' ] },
+        { answer: 'TV 시청을 하지 않는다', data : [0] },
+        { answer: '0시간 이상 3시간 미만', data : [1.5] },
+        { answer: '3시간 이상 6시간 미만', data : [4.5] },
+        { answer: '6시간 이상 9시간 미만', data : [7.5] },
+        { answer: '9시간 이상 12시간 미만', data : [10.5] },
       ]
     },
     {
       q: '7. 하루에 컴퓨터를 몇 시간 정도 이용하나요?',
       a: [
-        { answer: '컴퓨터를 이용하지 않는다', type: ['dragon', 'chick', 'pig'] },
-        { answer: '0시간 이상 3시간 미만', type: ['cow', 'rabbit', 'horse', 'pig' ] },
-        { answer: '3시간 이상 6시간 미만', type: ['tiger', 'dog', 'monkey', 'dragon' ] },
-        { answer: '6시간 이상 9시간 미만', type: ['tiger', 'dog', 'monkey', 'dragon' ] },
-        { answer: '9시간 이상 12시간 미만', type: ['tiger', 'dog', 'monkey', 'dragon' ] },
+        { answer: '컴퓨터를 이용하지 않는다', data : [0] },
+        { answer: '0시간 이상 3시간 미만', data : [1.5] },
+        { answer: '3시간 이상 6시간 미만', data : [4.5] },
+        { answer: '6시간 이상 9시간 미만', data : [7.5] },
+        { answer: '9시간 이상 12시간 미만', data : [10.5] },
       ]
     },
     {
       q: '8. 세탁기를 일주일에 몇 번 돌리나요? ',
       a: [
-        { answer: '세탁기를 사용하지 않는다', type: ['cow', 'dragon', 'chick', 'pig' ] },
-        { answer: '1회', type: ['sheep', 'mouse', 'rabbit', 'horse', 'dog'] },
-        { answer: '2회', type: ['tiger', 'snake', 'monkey' ] },
-        { answer: '3회', type: ['tiger', 'snake', 'monkey' ] },
-        { answer: '4회', type: ['tiger', 'snake', 'monkey' ] },
+        { answer: '세탁기를 사용하지 않는다',data : [0] },
+        { answer: '1회', data : [1] },
+        { answer: '2회', data : [2] },
+        { answer: '3회', data : [3] },
+        { answer: '4회', data : [4] },
       ]
     },
     {
       q: '9. 외출 시 또는 자리를 비울 시에 플러그를 뽑는 습관이 있나요?',
       a: [
-        { answer: 'YES', type: ['mouse', 'dragon', 'chick' ] },
-        { answer: 'NO', type: ['rabbit', 'tiger', 'horse', 'snake', 'dog', 'monkey' ] },
+        { answer: 'YES'},
+        { answer: 'NO' },
       ]
     },
     // 4. 자원
