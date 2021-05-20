@@ -50,27 +50,28 @@ const qnaList = [
     {
       q: '3. 여름철 에어컨 사용 시간이 어느정도 인가요?', //5번 인덱스
       a: [
-        { answer: '사용하지 않는다', type: ['dragon', 'chick', 'pig' ] },
-        { answer: '1시간 이상 4시간 미만', type: ['mouse', 'rabbit', 'horse', 'dog' ] },
-        { answer: '4시간 이상 7시간 미만', type: ['cow', 'sheep', 'tiger', 'snake', 'monkey' ] },
-        { answer: '7시간 이상 11시간 미만', type: ['cow', 'sheep', 'tiger', 'snake', 'monkey' ] },
-        { answer: '11시간 이상 15시간 미만', type: ['cow', 'sheep', 'tiger', 'snake', 'monkey' ] },
+        { answer: '사용하지 않는다', data: [0]},//시간
+        { answer: '1시간 이상 4시간 미만', data: [2.5]}, 
+        { answer: '4시간 이상 7시간 미만', data: [5.5]},
+        { answer: '7시간 이상 11시간 미만', data: [9]},
+        { answer: '11시간 이상 15시간 미만', data: [13]},
       ]
     },
-    {
+    { //26도 : 1.8kWh(1시간당) -> 1도 낮아지면 +0.225kWh 로 계산하여 탄소계산기로 계산
       q: '3-1. 에어컨 평균 설정 온도는 몇 도인가요?',
       a: [
-        { answer: '18도 미만', type: ['cow', 'sheep', 'pig' ] },
-        { answer: '19도 이상 21도 미만', type: ['tiger', 'dragon', 'chick' ] },
-        { answer: '22도 이상 24도 미만', type: ['mouse', 'rabbit', 'horse', 'snake', 'dog', 'monkey' ] },
-        { answer: '25도 이상', type: ['mouse', 'rabbit', 'horse', 'snake', 'dog', 'monkey' ] },
+        { answer: '18도 이하', data: [3.6] }, //18도
+        { answer: '19도 이상 21도 미만', data: [3.15] },//20도
+        { answer: '21도 이상 24도 미만', data: [2.7]  },//22도
+        { answer: '24도 이상 26도 미만', data: [2.025]  },//25도
+        { answer: '26도 이상', data: [1.8]},
       ]
     },
     {
       q: '4. 보일러가 아닌 단열재로 열 손실을 방지하고 있나요?', // 7번 인덱스
       a: [
-        { answer: 'YES', type: ['mouse', 'dragon', 'chick' ] },
-        { answer: 'NO', type: ['rabbit', 'tiger', 'horse', 'snake', 'dog', 'monkey' ] },
+        { answer: 'YES', data: [1]},
+        { answer: 'NO', data: [0]},
       ]
     },
     // 3. 전기

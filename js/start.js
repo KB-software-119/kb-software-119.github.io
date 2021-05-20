@@ -120,6 +120,83 @@ function calTraffic(){
 }
 
 
+function calAircondition(){
+  
+  var tree3;  //3번 문항 소비한 소나무 
+  var co2_3;  //3번 문항 발생시킨 co2 
+  var tree4;  //4번 문항 절약한 소나무
+  var co2_4;  //4번 문항 절약한 co2
+  var totalAir_tree; // total 소비한 소나무
+  var totalAir_co2;  //total 발생시킨 co2
+
+  // 3번 문항 : 에어컨 사용 시간  ,  3-1번 문항 : 에어컨 사용 온도
+  var target3 = qnaList[5].a[select[5]]; 
+  var target3_1= qnaList[6].a[select[6]]; 
+  // 3번 문항과 3-1번 문항 곱하여 계산 = 사용시간 * 사용온도 (단위: 30일동안 사용한 kW)
+  var ans3 = Math.round(target3.data[0]*target3_1.data[0]*30);
+  // kw를 소나무와 co2로 환산
+  tree3 = ans3*0.1; 
+  co2_3 = ans3*0.5;
+  
+  console.log("에어컨 사용에 따라 필요한 소나무 : ",tree3,"그루")
+  console.log("에어컨 사용에 따라 발생하는 이산화탄소 : ",co2_3,"kg")
+ 
+
+  //4번 문항 : 단열재 사용여부
+  var target4 = qnaList[7].a[select[7]];
+  var ans4 = Math.round(target4.data[0]); 
+  
+  //ans4 == 1 이면 단열재 사용한다, 0 이면 사용 안한다.
+  if(ans4==1)
+  {
+    tree4 = 10.8/12; // 단위 : 그루 (1달)
+    co2_4 = 71.4/12; // 단위 : kg (1달)
+  }
+  else{
+    tree4 = 0;
+    co2_4 = 0;
+  }
+
+  console.log("단열재 사용에 따라 절약한 소나무 : ",tree4,"그루") 
+  console.log("단열재 사용에 따라 절약한 이산화탄소 : ",co2_4,"kg")
+    
+  
+ //단위 : 1년 
+  totalAir_tree = (tree3 - tree4)*12; // 3번은 필요한 소나무, 4번은 절약한 소나무여서 뺄셈 계산)
+  totalAir_co2 = (co2_3 - co2_4)*12; //  3번은 필요한 co2, 4번은 절약한 co2여서 뺼셈 계산
+  
+  // 소수점 둘째자리까지 표현
+  tree3=tree3.toFixed(2);
+  co2_3=co2_3.toFixed(2);
+  tree4=tree4.toFixed(2);
+  co2_4=co2_4.toFixed(2);
+  totalAir_tree=totalAir_tree.toFixed(2);
+  totalAir_co2=totalAir_co2.toFixed(2);
+
+  if(totalAir_tree < 0) // 에어컨 사용안하고 단열재 사용하는 경우 
+  {
+    console.log("현재 냉/난방기 사용습관으로 아끼고 있는 소나무 : ",totalAir_tree,"그루")
+  }
+  else
+  {
+    console.log("현재 냉/난방기 사용습관으로 필요한 소나무 : ",totalAir_tree,"그루")    
+  }  
+  
+  if( totalAir_co2 < 0) // 에어컨 사용안하고 단열재 사용하는 경우
+  {
+    console.log("현재 냉/난방기로 사용습관으로 절약하고 있는 이산화탄소 : ",totalAir_co2,"kg")
+  }
+  else
+  {
+    console.log("현재 냉/난방기로 사용습관으로 발생시키는 이산화탄소 : ",totalAir_co2,"kg")
+  }
+
+  document.getElementById("i_ans3").innerHTML=co2_3;
+  document.getElementById("i_ans4").innerHTML=co2_4; // 단열재 사용으로 절약한 co2
+  document.getElementById("i_totalAir_co2").innerHTML= totalAir_co2;
+  document.getElementById("i_totalAir_tree").innerHTML= totalAir_tree;
+}
+
 function calElectricity(){
 
   var target = []
@@ -211,6 +288,7 @@ function goResult(){
       result.style.display = "block"
     }, 450)})
     calTraffic();
+    calAircondition();
     calElectricity();
     calResource();
 }
