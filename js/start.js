@@ -175,7 +175,7 @@ function calAircondition(){
 
   if(totalAir_tree < 0) // 에어컨 사용안하고 단열재 사용하는 경우 
   {
-    console.log("현재 냉/난방기 사용습관으로 아끼고 있는 소나무 : ",totalAir_tree,"그루")
+    console.log("현재 냉/난방기 사용습관으로 아끼고 있는 소나무 : ",(-1)*totalAir_tree,"그루")
   }
   else
   {
@@ -224,7 +224,6 @@ function calElectricity(){
 
   //9번 문항 : 외출시 플러그 뽑는지 o/x
   
-
 
   //전기분야 연간 CO2배출량 및 필요 소나무 계산
   var elec_result = 0;
