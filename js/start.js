@@ -382,6 +382,12 @@ function calElectricity() {
   console.log(elec_result, "\n");
   elec_result = elec_result.toFixed(1);
 
+  // ans[0] = ans[0].toFixed(1);
+  // ans[1] = ans[1].toFixed(1);
+  // ans[2] = and[2].toFixed(1);
+  // plug = plug.toFixed(1);
+  // elec_result = elec_result.toFixed(1);
+  // need_tree = need_tree.toFixed(1);
   console.log("전기분야 1주일 간 이산화탄소 배출량 : ", elec_result, "kg");
   var need_tree = Math.round(elec_result / 5); //이산화 탄소 배출량 0.5kg당 필요 소나무 0.1그루
   need_tree = need_tree.toFixed(1);
@@ -425,10 +431,10 @@ function calResource() {
   //console.log("자원분야 1년간 이산화탄소 배출량 : ",resource_result,"kg");
   var need_tree = Math.round(((resource_result / 6.6) * 10) / 10); //이산화 탄소 배출량 6.6kg당 필요 소나무 1그루
   //console.log("필요한 소나무 : ",need_tree,"그루");
-  document.getElementById("i_ans10").innerHTML = ans10;
-  document.getElementById("i_ans11").innerHTML = ans11;
-  document.getElementById("i_ans12").innerHTML = ans12;
-  document.getElementById("i_ans13").innerHTML = ans13;
+  document.getElementById("i_ans10").innerHTML = ans10/1000;
+  document.getElementById("i_ans11").innerHTML = ans11/1000;
+  document.getElementById("i_ans12").innerHTML = ans12/1000;
+  document.getElementById("i_ans13").innerHTML = ans13/1000;
   document.getElementById("i_resource_result").innerHTML = resource_result;
   document.getElementById("i_need_tree").innerHTML = need_tree;
 }
