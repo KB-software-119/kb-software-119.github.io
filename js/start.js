@@ -162,7 +162,7 @@ function calAircondition(){
     
   
  //단위 : 1년 
-  totalAir_tree = (tree3 - tree4)*12; // 3번은 필요한 소나무, 4번은 절약한 소나무여서 뺄셈 계산)
+  totalAir_tree = (tree3 - tree4)*12; // 3번은 필요한 소나무, 4번은 절약한 소나무여서 뺄셈 계산) 
   totalAir_co2 = (co2_3 - co2_4)*12; //  3번은 필요한 co2, 4번은 절약한 co2여서 뺼셈 계산
   
   // 소수점 둘째자리까지 표현
@@ -222,8 +222,14 @@ function calElectricity(){
   console.log("세탁기 사용 횟수에 따라 발생하는 이산화탄소 : ",ans[2]/2,"kg")
 
 
-  //9번 문항 : 외출시 플러그 뽑는지 o/x
-  
+  // 9번 문항 : 외출시 플러그 뽑는지 o/x
+  // 뽑으면 [1], 안뽑으면 [0]
+  var plug=0;
+  if (target[3].data[0] == 1){
+    plug = 12.6;
+    console.log("사용하지 않는 플러그를 뽑아 절약하고 있는 이산화탄소 : ",plug,"kg")
+  }
+
 
   //전기분야 연간 CO2배출량 및 필요 소나무 계산
   var elec_result = 0;
@@ -231,11 +237,22 @@ function calElectricity(){
   for (var i=0; i<3; i++){
     elec_result += ans[i]/2;
   }
+  
+  // 1주일 -> 1년 단위으로
+  elec_result = elec_result *52;
+  elec_result -= plug;
 
-  //var resource_result = Math.round((ans10*12+ans11*243+ans12*52+ans13*52)/1000 *10) / 10;
   console.log("전기분야 1주일 간 이산화탄소 배출량 : ",elec_result,"kg");
   var need_tree = Math.round(elec_result/5); //이산화 탄소 배출량 0.5kg당 필요 소나무 0.1그루
   console.log("사용한 전기 때문에 필요한 소나무 : ",need_tree,"그루");
+
+  document.getElementById("i_ansTv").innerHTML = ans[0]/2;
+  document.getElementById("i_ansComputer").innerHTML = ans[1]/2;
+  document.getElementById("i_ansWashing").innerHTML = ans[2]/2;
+  document.getElementById("i_ansPlug").innerHTML = plug;
+
+  document.getElementById("i_totalElec_co2").innerHTML= elec_result;
+  document.getElementById("i_totalElec_tree").innerHTML= need_tree;
 }
 
 

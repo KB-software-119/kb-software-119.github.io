@@ -22,17 +22,6 @@ body {
 .title_2 {
   font-size: 28px;
 }
-.wrap{
+.wrap {
   animation: up-down 1.4s infinite ease-in-out alternate;
-}
-
-.btn-success {
-  width: 20rem;
-  padding: 12px 20px;
-  text-align: center;
-  font-size: 30px;
-  background-color: var(--main-color);
-  color: var(--white-color);
-  border: none;
-  letter-spacing: 6px;
 }
