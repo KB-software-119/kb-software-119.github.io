@@ -26,6 +26,8 @@
    <link rel="stylesheet" href="./css/result.css">
    <link rel="icon" href="./img/TSJK_logo.png">
    <!--css를 html파일에 연결-->
+   <script  src="http://code.jquery.com/jquery-latest.min.js"></script> 
+   <!-- JQUERY 설정 -->
 </head>
 
 <body>
@@ -64,14 +66,27 @@
          </div>
          <!-- 교통분야 결과 출력화면 -->
          <div class="resource">
-            교통 검사 결과입니다 <br>
-            0000 : XXXXg<br>
-            0000 : XXXXg<br>
-            0000 : XXXXg<br>
-            0000 : XXXXg <br>
-            연간 CO2 배출량 : XXXXkg<br>
-            필요 소나무 : XXXX그루
-         </div>
+            교통 검사 결과 확인 
+            <br>
+            도보/자전거 이용으로 절감한 CO2 :<span id="i_ans1_co2"></span>g
+            <br>
+            도보/자전거 이용으로 아낀 소나무 :<span id="i_ans1_tree"></span>그루
+            <br>
+            <br>
+
+            자동차 운행으로 발생하고 있는 CO2 :<span id="i_ans2_co2"></span>g
+            <br>
+            자동차 운행으로 필요한 소나무 :<span id="i_ans2_tree"></span>그루
+            <br>
+            <br>
+
+            대중교통 이용으로 절감한 CO2 :<span id="i_ans3_co2"></span>g
+            <br>
+            대중교통 이용으로 아낀 소나무 :<span id="i_ans3_tree"></span>그루
+            <br>
+            <br>
+
+        </div>
          <!-------------------------->
          <!-- 냉/난방분야 결과 출력화면 -->
          <div class="resource1">
