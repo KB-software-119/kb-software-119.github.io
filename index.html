@@ -30,7 +30,7 @@
 
 <body>
    <div class="container"> 
-    <section id = "main" class="mx-auto mt-5 py-5">
+    <section id = "main" class="mx-auto mt-5 py-3">
        <div class="title_1">
         <h1>탄소 소비 습관 테스트</h1>
        </div>
@@ -42,8 +42,10 @@
            <br><br>탄소 소비 성향 검사 사이트입니다! <br>
            아래 시작하기 버튼을 눌러<br> 시작해 주십시오.<br>
         </div>
+        <div class="d-grid gap-2 col-10 mx-auto">
         <button type="button" class="btn btn-success mt-5" onclick="js:begin()">시작하기</button>
-    </section>
+      </div>
+      </section>
     <section id="qna">
        <div class="status mx-auto mt-5">
          <div class="statusBar">
@@ -92,13 +94,26 @@
            <!-------------------------->
            <!-- 전기분야 결과 출력화면 -->
            <div class="resource2">
-              전기 검사 결과 입니다 <br>
-              0000 : XXXXg<br>
-              0000 : XXXXg<br>
-              0000 : XXXXg<br>
-              0000 : XXXXg <br>
-              연간 CO2 배출량 : XXXXkg<br>
-              필요 소나무 : XXXX그루
+            TV 시청으로 발생한 CO2 : 
+            <span id="i_ansTv"></span>g
+            <br>
+            컴퓨터 사용으로 발생한 CO2: 
+            <span id="i_ansComputer"></span>g
+            <br>
+            세탁기 사용으로 발생한 CO2: 
+            <span id="i_ansWashing"></span>g
+            <br>
+            사용하지 않는 플러그 뽑아 절약한 CO2: 
+            <span id="i_ansPlug"></span>g
+            <br>
+            <br>
+            연간 CO2 배출량 : 
+            <span id="i_totalElec_co2"></span>g
+            <br>
+            연간 필요 소나무 : 
+            <span id="i_totalElec_tree"></span>그루
+            <br>
+            <br>
            </div>
            <!-------------------------->
            <!-- 자원분야 결과 출력화면 -->
