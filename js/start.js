@@ -340,26 +340,22 @@ function calElectricity() {
   }
 
   //6번 문항 : TV 시청 시간
-  ans[0] = Math.round(target[0].data[0] * 150) / 10; // 전력량
-  ans[0] = ans[0] * 7; // 일주일로 계산하기위해
-  console.log("TV 시청 시간에 따라 발생하는 이산화탄소 : ", ans[0] / 2, "kg");
+  ans[0] = Math.round(target[0].data[0] * 150); // 하루 전력량 w
+  ans[0] = (ans[0] * 7 * 52) / 1000;
+  ans[0] = parseFloat((ans[0] / 2).toFixed(1));
+  console.log("TV 시청 시간에 따라 발생하는 이산화탄소 : ", ans[0], "kg");
 
   //7번 문항 : 컴퓨터 사용 시간
-  ans[1] = Math.round(target[1].data[0] * 255.9) / 10; // 전력량
-  ans[0] = ans[0] * 7; // 일주일로 계산하기위해
-  console.log(
-    "컴퓨터 사용 시간에 따라 발생하는 이산화탄소 : ",
-    ans[1] / 2,
-    "kg"
-  );
+  ans[1] = Math.round(target[1].data[0] * 255.9); // 하루 전력량 w
+  ans[1] = (ans[1] * 7 * 52) / 1000;
+  ans[1] = parseFloat((ans[1] / 2).toFixed(1));
+  console.log("컴퓨터 사용 시간에 따라 발생하는 이산화탄소 : ", ans[1], "kg");
 
   //8번 문항 : 세탁기 사용 횟수
-  ans[2] = Math.round(target[2].data[0] * 242.8) / 10; // 전력량
-  console.log(
-    "세탁기 사용 횟수에 따라 발생하는 이산화탄소 : ",
-    ans[2] / 2,
-    "kg"
-  );
+  ans[2] = Math.round(target[2].data[0] * 242.8); // 하루 전력량 w
+  ans[2] = (ans[2] * 7 * 52) / 1000;
+  ans[2] = parseFloat((ans[2] / 2).toFixed(1));
+  console.log("세탁기 사용 횟수에 따라 발생하는 이산화탄소 : ", ans[2], "kg");
 
   // 9번 문항 : 외출시 플러그 뽑는지 o/x
   // 뽑으면 [1], 안뽑으면 [0]
@@ -377,22 +373,20 @@ function calElectricity() {
   var elec_result = 0;
 
   for (var i = 0; i < 3; i++) {
-    elec_result += ans[i] / 2;
+    elec_result += ans[i];
+    console.log(elec_result, "\n");
   }
 
-  // 1주일 -> 1년 단위으로
-  elec_result = elec_result * 52;
   elec_result -= plug;
+
+  console.log(elec_result, "\n");
+  elec_result = elec_result.toFixed(1);
 
   console.log("전기분야 1주일 간 이산화탄소 배출량 : ", elec_result, "kg");
   var need_tree = Math.round(elec_result / 5); //이산화 탄소 배출량 0.5kg당 필요 소나무 0.1그루
-  console.log("사용한 전기 때문에 필요한 소나무 : ", need_tree, "그루");
-  ans[0] = ans[0].toFixed(1);
-  ans[1] = ans[1].toFixed(1);
-  ans[3] = ans[2].toFixed(1);
-  plug = plug.toFixed(1);
-  elec_result = elec_result.toFixed(1);
   need_tree = need_tree.toFixed(1);
+  console.log("사용한 전기 때문에 필요한 소나무 : ", need_tree, "그루");
+
   document.getElementById("i_ansTv").innerHTML = ans[0] / 2;
   document.getElementById("i_ansComputer").innerHTML = ans[1] / 2;
   document.getElementById("i_ansWashing").innerHTML = ans[2] / 2;
@@ -454,7 +448,7 @@ function goResult() {
   calAircondition();
   calElectricity();
   calResource();
-  result_accordian();
+  /*result_accordian();*/
 }
 
 function addAnswer(answerText, qIdx, idx) {
