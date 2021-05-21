@@ -29,7 +29,7 @@ const select = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // 사용자가
 // }
 
 function calTraffic() {
-  // 1번 문항 : 도보/자전거 이용 횟수
+  // 1번 문항 : 도보/자전거 이용 횟수 (일주일)
   var co2 = 25.1;
   var tree = 3.8;
   var num = select[0]; // 몇 번 선지
@@ -66,7 +66,7 @@ function calTraffic() {
   var total_co21 = Math.round(freq * co2 * 10) / 10;
   var total_tree1 = Math.round(freq * tree * 10) / 10;
 
-  // 2-1, 2-2번 문항 : 자동차 연료 종류와 연료비
+  // 2-1, 2-2번 문항 : 자동차 연료 종류와 연료비 (월간)
   var op = select[1]; // 자동차 이용 여부
   var fuel = select[2]; // 연료 선지
   var cost = qnaList[3].a[select[3]].data[0]; // 연료비
@@ -234,29 +234,20 @@ function calTraffic() {
   var total_co23 = Math.round(freq * co2 * 10) / 10;
   var total_tree3 = Math.round(freq * tree * 10) / 10;
 
-  document.getElementById("i_ans1_co2").innerHTML = total_co21;
-  document.getElementById("i_ans1_tree").innerHTML = total_tree1;
-
-  // 자동차 운행으로 발생되는 값
-  document.getElementById("i_ans2_co2").innerHTML = total_co22;
-  document.getElementById("i_ans2_tree").innerHTML = total_tree2;
-
-  document.getElementById("i_ans3_co2").innerHTML = total_co23;
-  document.getElementById("i_ans3_tree").innerHTML = total_tree3;
-
-  traffic_co2 = Math.round(total_co22 - (total_co21 + total_co23) * 10) / 10;
+  traffic_co2 =
+    Math.round(total_co22 * 12 - (total_co21 + total_co23) * 10) / 10;
   traffic_tree =
-    Math.round(total_tree2 - (total_tree1 + total_tree3) * 10) / 10;
+    Math.round(total_tree2 * 12 - (total_tree1 + total_tree3) * 10) / 10;
 
   if (traffic_co2 < 0) {
-    $(".resource").append(
+    $("#traffic").append(
       `<span>연간 CO2 절감량 : ${
         traffic_co2 * -1
-      } <br>연간 아끼고 있는 소나무 : ${traffic_tree * -1}그루</span>`
+      }kg <br>연간 아끼고 있는 소나무 : ${traffic_tree * -1}그루</span>`
     );
   } else {
-    $(".resource").append(
-      `<span>연간 CO2 배출량 : ${traffic_co2} <br>연간 필요한 소나무 : ${traffic_tree}그루</span>`
+    $("#traffic").append(
+      `<span>연간 CO2 배출량 : ${traffic_co2}kg <br>연간 필요한 소나무 : ${traffic_tree}그루</span>`
     );
   }
 }
