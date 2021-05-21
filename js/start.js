@@ -463,7 +463,7 @@ function goResult() {
   calAircondition();
   calElectricity();
   calResource();
-  /*result_accordian();*/
+  result_accordian();
 }
 
 function addAnswer(answerText, qIdx, idx) {
