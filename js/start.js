@@ -227,7 +227,7 @@ function calElectricity(){
   var plug=0;
   if (target[3].data[0] == 1){
     plug = 12.6;
-    console.log("사용하지 않는 플러그 뽑아 절약하고 있는 이산화탄소 : ",plug,"kg")
+    console.log("사용하지 않는 플러그를 뽑아 절약하고 있는 이산화탄소 : ",plug,"kg")
   }
 
 
