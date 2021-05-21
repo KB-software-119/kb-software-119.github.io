@@ -265,7 +265,9 @@ function calAircondition() {
   var co2_4; //4번 문항 절약한 co2
   var totalAir_tree; // total 소비한 소나무
   var totalAir_co2; //total 발생시킨 co2
-
+  var if_co2;  // 조건문에 넣을 값
+  var if_tree; // 조건문에 넣을 값
+  
   // 3번 문항 : 에어컨 사용 시간  ,  3-1번 문항 : 에어컨 사용 온도
   var target3 = qnaList[5].a[select[5]];
   var target3_1 = qnaList[6].a[select[6]];
@@ -299,42 +301,50 @@ function calAircondition() {
   totalAir_tree = Math.round((tree3 - tree4) * 12 * 10) / 10; // 3번은 필요한 소나무, 4번은 절약한 소나무여서 뺄셈 계산)
   totalAir_co2 = Math.round((co2_3 - co2_4) * 12 * 10) / 10; //  3번은 필요한 co2, 4번은 절약한 co2여서 뺼셈 계산
 
-  // 소수점 둘째자리까지 표현
-  tree3 = tree3.toFixed(1);
-  co2_3 = co2_3.toFixed(1);
-  tree4 = tree4.toFixed(1);
-  co2_4 = co2_4.toFixed(1);
-  totalAir_tree = totalAir_tree.toFixed(1);
-  totalAir_co2 = totalAir_co2.toFixed(1);
+  
 
-  if (totalAir_tree < 0) {
-    // 에어컨 사용안하고 단열재 사용하는 경우
-    console.log(
-      "현재 냉/난방기 사용습관으로 아끼고 있는 소나무 : ",
-      -1 * totalAir_tree,
-      "그루"
-    );
+  if(totalAir_tree < 0) // 에어컨 사용안하고 단열재 사용하는 경우 
+  {
+    console.log("현재 냉/난방기 사용습관으로 아끼고 있는 소나무 : ",totalAir_tree,"그루");
   }
-
-  if (totalAir_co2 < 0) {
-    // 에어컨 사용안하고 단열재 사용하는 경우
-    console.log(
-      "현재 냉/난방기로 사용습관으로 절약하고 있는 이산화탄소 : ",
-      totalAir_co2,
-      "kg"
-    );
-  } else {
-    console.log(
-      "현재 냉/난방기로 사용습관으로 발생시키는 이산화탄소 : ",
-      totalAir_co2,
-      "kg"
-    );
+  else
+  {
+    console.log("현재 냉/난방기 사용습관으로 필요한 소나무 : ",totalAir_tree,"그루");
+  }  
+  
+  if( totalAir_co2 < 0) // 에어컨 사용안하고 단열재 사용하는 경우
+  {
+    console.log("현재 냉/난방기로 사용습관으로 절약하고 있는 이산화탄소 : ",totalAir_co2,"kg");
   }
+  else
+  {
+    console.log("현재 냉/난방기 사용습관으로 배출하고 있는 이산화탄소 : ",totalAir_co2,"kg");  
+  }
+  // 소수점 첫째자리까지 표현
+  tree3=tree3.toFixed(1);
+  co2_3=co2_3.toFixed(1);
+  tree4=tree4.toFixed(1);
+  co2_4=co2_4.toFixed(1);
+  totalAir_tree=totalAir_tree.toFixed(1);
+  totalAir_co2=totalAir_co2.toFixed(1);
 
-  document.getElementById("i_ans3").innerHTML = co2_3;
-  document.getElementById("i_ans4").innerHTML = co2_4; // 단열재 사용으로 절약한 co2
-  document.getElementById("i_totalAir_co2").innerHTML = totalAir_co2;
-  document.getElementById("i_totalAir_tree").innerHTML = totalAir_tree;
+ 
+  if_co2 = totalAir_co2;
+  if_tree = totalAir_tree;
+  document.getElementById("i_ans3").innerHTML=co2_3;
+  document.getElementById("i_ans4").innerHTML=co2_4; // 단열재 사용으로 절약한 co2
+  //document.getElementById("i_totalAir_co2").innerHTML= totalAir_co2;
+  //document.getElementById("i_totalAir_tree").innerHTML= totalAir_tree;
+
+ if(if_co2<0){
+  $('#totalAir').append(`<span>연간 CO2 절감량 : ${if_co2*(-1)}kg <br></span>`);
+}
+ if(if_tree<0){
+  $('#totalAir').append(`<span>연간 아낀 소나무 : ${if_tree*(-1)}그루 <br> </span>`); 
+}
+ else{
+  $('#totalAir').append(`<span>연간 CO2 배출량 : ${if_co2}kg <br>연간 필요 소나무 : ${totalAir_tree}그루</span>`);
+}
 }
 
 function calElectricity() {
@@ -380,12 +390,12 @@ function calElectricity() {
 
   for (var i = 0; i < 3; i++) {
     elec_result += ans[i];
-    console.log(elec_result, "\n");
+    //console.log(elec_result, "\n");
   }
 
   elec_result -= plug;
 
-  console.log(elec_result, "\n");
+  //console.log(elec_result, "\n");
   elec_result = elec_result.toFixed(1);
 
   // ans[0] = ans[0].toFixed(1);
@@ -399,13 +409,22 @@ function calElectricity() {
   need_tree = need_tree.toFixed(1);
   console.log("사용한 전기 때문에 필요한 소나무 : ", need_tree, "그루");
 
-  document.getElementById("i_ansTv").innerHTML = ans[0] / 2;
-  document.getElementById("i_ansComputer").innerHTML = ans[1] / 2;
-  document.getElementById("i_ansWashing").innerHTML = ans[2] / 2;
+  document.getElementById("i_ansTv").innerHTML = ans[0];
+  document.getElementById("i_ansComputer").innerHTML = ans[1];
+  document.getElementById("i_ansWashing").innerHTML = ans[2];
   document.getElementById("i_ansPlug").innerHTML = plug;
 
-  document.getElementById("i_totalElec_co2").innerHTML = elec_result;
-  document.getElementById("i_totalElec_tree").innerHTML = need_tree;
+  if (elec_result < 0) {
+    document.getElementById("i_totalElec_co2").innerHTML =
+      "연간 CO2 절감량 : " + -elec_result + "kg";
+    document.getElementById("i_totalElec_tree").innerHTML =
+      "보호된 소나무 : " + -need_tree + "그루";
+  } else {
+    document.getElementById("i_totalElec_co2").innerHTML =
+      "연간 CO2 배출량 : " + elec_result + "kg";
+    document.getElementById("i_totalElec_tree").innerHTML =
+      "필요한 소나무 : " + need_tree + "그루";
+  }
 }
 
 function calResource() {
@@ -437,10 +456,10 @@ function calResource() {
   //console.log("자원분야 1년간 이산화탄소 배출량 : ",resource_result,"kg");
   var need_tree = Math.round(((resource_result / 6.6) * 10) / 10); //이산화 탄소 배출량 6.6kg당 필요 소나무 1그루
   //console.log("필요한 소나무 : ",need_tree,"그루");
-  document.getElementById("i_ans10").innerHTML = ans10/1000;
-  document.getElementById("i_ans11").innerHTML = ans11/1000;
-  document.getElementById("i_ans12").innerHTML = ans12/1000;
-  document.getElementById("i_ans13").innerHTML = ans13/1000;
+  document.getElementById("i_ans10").innerHTML = ans10 / 1000;
+  document.getElementById("i_ans11").innerHTML = ans11 / 1000;
+  document.getElementById("i_ans12").innerHTML = ans12 / 1000;
+  document.getElementById("i_ans13").innerHTML = ans13 / 1000;
   document.getElementById("i_resource_result").innerHTML = resource_result;
   document.getElementById("i_need_tree").innerHTML = need_tree;
 }
@@ -460,7 +479,7 @@ function goResult() {
   calAircondition();
   calElectricity();
   calResource();
-  /*result_accordian();*/
+  result_accordian();
 }
 
 function addAnswer(answerText, qIdx, idx) {
@@ -469,7 +488,7 @@ function addAnswer(answerText, qIdx, idx) {
   answer.classList.add("answerList"); // 만든 버튼 여러개에는 selector가 없어서 answer에 answerList라는 클래스 값을 만들어준다
 
   /* css 관련 속성 */
-  answer.classList.add("my-3");
+  answer.classList.add("my-4");
   answer.classList.add("py-3");
   answer.classList.add("mx-auto");
   answer.classList.add("fadeIn");
