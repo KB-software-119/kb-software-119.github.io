@@ -5,6 +5,14 @@ const result = document.querySelector("#result");
 const endPoint = 16; // 질문 개수
 const select = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // 사용자가 선지를 누를 때마다 어떤 선지를 누른지 저장
 
+var resource_result;
+var resource_need_tree;
+
+var elec_result;
+var need_tree;
+
+var totalAir_co2;
+var totalAir_tree;
 // function calResult(){ // 질문에 대한 대답 중 가장 많이 나온 type을 결과값으로 보여준다
 //   console.log(select);
 //   var result = select.indexOf(Math.max(...select));
@@ -111,8 +119,6 @@ function calAircondition() {
   var co2_3; //3번 문항 발생시킨 co2
   var tree4; //4번 문항 절약한 소나무
   var co2_4; //4번 문항 절약한 co2
-  var totalAir_tree; // total 소비한 소나무
-  var totalAir_co2; //total 발생시킨 co2
   var if_co2;  // 조건문에 넣을 값
   var if_tree; // 조건문에 넣을 값
   
@@ -234,7 +240,7 @@ function calElectricity() {
   }
 
   //전기분야 연간 CO2배출량 및 필요 소나무 계산
-  var elec_result = 0;
+  elec_result = 0;
 
   for (var i = 0; i < 3; i++) {
     elec_result += ans[i];
@@ -253,7 +259,7 @@ function calElectricity() {
   // elec_result = elec_result.toFixed(1);
   // need_tree = need_tree.toFixed(1);
   console.log("전기분야 1주일 간 이산화탄소 배출량 : ", elec_result, "kg");
-  var need_tree = Math.round(elec_result / 5); //이산화 탄소 배출량 0.5kg당 필요 소나무 0.1그루
+  need_tree = Math.round(elec_result / 5); //이산화 탄소 배출량 0.5kg당 필요 소나무 0.1그루
   need_tree = need_tree.toFixed(1);
   console.log("사용한 전기 때문에 필요한 소나무 : ", need_tree, "그루");
 
@@ -297,19 +303,34 @@ function calResource() {
   //console.log("배달음식 주문 횟수에 따라 발생하는 이산화탄소 : ",ans13,"g");
 
   //자원분야 연간 CO2배출량 및 필요 소나무 계산
-  var resource_result =
+  resource_result =
     Math.round(
       ((ans10 * 12 + ans11 * 243 + ans12 * 52 + ans13 * 52) / 1000) * 10
     ) / 10;
   //console.log("자원분야 1년간 이산화탄소 배출량 : ",resource_result,"kg");
-  var need_tree = Math.round(((resource_result / 6.6) * 10) / 10); //이산화 탄소 배출량 6.6kg당 필요 소나무 1그루
+  resource_need_tree = Math.round(((resource_result / 6.6) * 10) / 10); //이산화 탄소 배출량 6.6kg당 필요 소나무 1그루
   //console.log("필요한 소나무 : ",need_tree,"그루");
   document.getElementById("i_ans10").innerHTML = ans10 / 1000;
   document.getElementById("i_ans11").innerHTML = ans11 / 1000;
   document.getElementById("i_ans12").innerHTML = ans12 / 1000;
   document.getElementById("i_ans13").innerHTML = ans13 / 1000;
   document.getElementById("i_resource_result").innerHTML = resource_result;
-  document.getElementById("i_need_tree").innerHTML = need_tree;
+  document.getElementById("i_need_tree").innerHTML = resource_need_tree;
+}
+
+function calTotal(){
+  var Total_result; 
+  var Total_need_tree;
+
+  calAircondition();
+  calElectricity();
+  calResource();
+
+  Total_result = elec_result*1 + totalAir_co2*1 + resource_result*1;
+  Total_need_tree = need_tree*1 + totalAir_tree*1 + resource_need_tree*1;
+
+  document.getElementById("total_resultt").innerHTML = Total_result;
+  document.getElementById("total_needd").innerHTML = Total_need_tree;
 }
 
 function goResult() {
@@ -327,6 +348,7 @@ function goResult() {
   calAircondition();
   calElectricity();
   calResource();
+  calTotal();
   result_accordian();
 }
 

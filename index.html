@@ -36,6 +36,7 @@
    <link rel="stylesheet" href="./css/animation.css">
    <link rel="stylesheet" href="./css/result.css">
    <link rel="icon" href="./img/TSJK_logo.png">
+
    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
    <script>
       Kakao.init('9f1d0597a2652b59998bc37e7c378db5');
@@ -54,9 +55,9 @@
 
 <body>
    <div class="container">
-      <section id="main" class="mx-auto mt-5 py-3">
+      <section id="main" class="mx-auto">
          <div class="title_1">
-            <h1><br><br>탄소 소비 습관 테스트</h1>
+            <h1><br>탄소 소비 습관 테스트</h1>
          </div>
          <div class="wrap">
             <!--모바일환경에서 이미지파일이 해당 비율을 유지하도록 함-->
@@ -87,8 +88,8 @@
             <h1>검사 결과</h1>
          </div>
          <div class="total_result">
-            연간 총 CO2 배출량 : 000kg <br>
-            필요 소나무 : 000그루<br>
+            연간 총 CO2 배출량 : <span id="total_resultt"></span>kg <br>
+            필요 소나무 : <span id="total_needd"></span>그루<br>
          </div>         
          <div class="container-fluid" style="min-height: calc(100vh - 136px);">
             <!-- 그룹 태그로 role과 aria-multiselectable를 설정한다. -->
@@ -276,23 +277,15 @@
             <br> 
             <hr>
             <br>
-            <br>
              <button type="button" class="link_button" onClick="location.href='index.html'">다시하기</button>
              <br>
              <br>
              
-
-
-
-
-
-
-         
-
       </section>
       <script src="js/data.js" charset="utf-8"></script>
       <script src="js/start.js" charset="utf-8"></script>
-      
+      <script src="js/share.js" charset="utf-8"></script>
+
    </div>
 </body>
 
