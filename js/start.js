@@ -34,10 +34,9 @@ function calTraffic() {
   var tree = 3.8;
   var num = select[0]; // 몇 번 선지
   var freq = qnaList[0].a[select[0]].data[0]; // 빈도
-
-  var result = Math.round(freq * co2 * 100) / 100;
-  var total_tree = Math.round(freq * tree * 100) / 100;
-
+  
+  var result = Math.round(freq * co2 * 10) / 10;
+  var total_tree = Math.round(freq * tree * 10) / 10;
   if (num == 0)
     console.log(
       "현재 가까운 거리를 도보나 자전거로 이용하고 있지 않습니다.\
@@ -77,8 +76,8 @@ function calTraffic() {
     // 10000원 기준 co2 발생량과 필요 소나무
     var base_co2 = 11.8;
     var base_tree = 1.8;
-    var total_co2 = Math.round(base_co2 + 11.7 * (cost - 1) * 100) / 100;
-    var total_tree = Math.round(base_tree + 1.8 * (cost - 1) * 100) / 100;
+    var total_co2 = Math.round(base_co2 + 11.7 * (cost - 1) * 10) / 10;
+    var total_tree = Math.round(base_tree + 1.8 * (cost - 1) * 10) / 10;
     if (num == 0)
       console.log(
         "현재 최대 %d만원 미만의 연료비를 지출하고 있습니다.\
@@ -107,8 +106,8 @@ function calTraffic() {
     // 경유
     var base_co2 = 16.2;
     var base_tree = 2.5;
-    var total_co2 = Math.round(base_co2 + 16.1 * (cost - 1) * 100) / 100;
-    var total_tree = Math.round(base_tree + 2.4 * (cost - 1) * 100) / 100;
+    var total_co2 = Math.round(base_co2 + 16.1 * (cost - 1) * 10) / 10;
+    var total_tree = Math.round(base_tree + 2.4 * (cost - 1) * 10) / 10;
     if (num == 0)
       console.log(
         "현재 최대 %d만원 미만의 연료비를 지출하고 있습니다.\
@@ -138,8 +137,8 @@ function calTraffic() {
     // LPG
     var base_co2 = 27.9;
     var base_tree = 4.2;
-    var total_co2 = Math.round(base_co2 + 27.8 * (cost - 1) * 100) / 100;
-    var total_tree = Math.round(base_tree + 4.2 * (cost - 1) * 100) / 100;
+    var total_co2 = Math.round(base_co2 + 27.8 * (cost - 1) * 10) / 10;
+    var total_tree = Math.round(base_tree + 4.2 * (cost - 1) * 10) / 10;
     if (num == 0)
       console.log(
         "현재 최대 %d만원 미만의 연료비를 지출하고 있습니다.\
@@ -238,6 +237,13 @@ function calTraffic() {
     Math.round(total_co22 * 12 - (total_co21 + total_co23) * 10) / 10;
   traffic_tree =
     Math.round(total_tree2 * 12 - (total_tree1 + total_tree3) * 10) / 10;
+
+  document.getElementById("i_ans1_co2").innerHTML = total_co21;
+  document.getElementById("i_ans1_tree").innerHTML = total_tree1; 
+  document.getElementById("i_ans2_co2").innerHTML = total_co22;
+  document.getElementById("i_ans2_tree").innerHTML = total_tree2;
+  document.getElementById("i_ans3_co2").innerHTML = total_co23;
+  document.getElementById("i_ans3_tree").innerHTML = total_tree3;
 
   if (traffic_co2 < 0) {
     $("#traffic").append(
