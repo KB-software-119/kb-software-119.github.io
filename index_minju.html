@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!--모바일환경에서도 비율에 맞춰 볼 수 있도록 설정-->
+   <title></title>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+   <!--Bootstrap을 이용한 css설정-->
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="./css/default.css">
+   <link rel="stylesheet" href="./css/main.css">
+   <link rel="stylesheet" href="./css/qna.css">
+   <link rel="stylesheet" href="./css/animation.css">
+   <link rel="stylesheet" href="./css/result.css">
+   <link rel="icon" href="./img/TSJK_logo.png">
+   <!--css를 html파일에 연결-->
+</head>
+
+<body>
+   <div class="container">
+      <section id="main" class="mx-auto mt-5 py-3">
+         <div class="title_1">
+            <h1>탄소 소비 습관 테스트</h1>
+         </div>
+         <div class="wrap">
+            <!--모바일환경에서 이미지파일이 해당 비율을 유지하도록 함-->
+            <img src="img/carbo.png" alt="mainImage" class="img-fluid">
+         </div>
+         <div class="title_2">
+            <br><br>탄소 소비 성향 검사 사이트입니다! <br>
+            아래 시작하기 버튼을 눌러<br> 시작해 주십시오.<br>
+         </div>
+         <div class="d-grid gap-2 col-10 mx-auto">
+            <button type="button" class="btn btn-success mt-5" onclick="js:begin()">시작하기</button>
+         </div>
+      </section>
+      <section id="qna">
+         <div class="status mx-auto mt-5">
+            <div class="statusBar">
+            </div>
+         </div>
+         <div class="qBox my-5 py-3 mx-auto">
+
+         </div>
+         <div class="answerBox">
+
+         </div>
+      </section>
+      <section id="result" class="mx-auto my-5 py-5 px-3">
+         <div class="title_1">
+            <h1>검사 결과</h1>
+         </div>
+
+         <div class="total_result">
+            연간 총 CO2 배출량 : 000kg <br>
+            필요 소나무 : 000그루
+         </div>
+
+         <div class="left">
+         <!-- 교통분야 결과 출력화면 -->
+         <button class="accordion">교통 검사 결과
+            <div class="total">
+               연간 CO2 배출량 :
+               <span id="i_total_co2"></span>g
+               <br>
+               연간 필요 소나무 :
+               <span id="i_total_tree"></span>그루
+            </div>
+         </button>
+         <div class="resource">
+            0000 : XXXXg<br>
+            0000 : XXXXg<br>
+            0000 : XXXXg<br>
+            0000 : XXXXg <br>
+            연간 CO2 배출량 : XXXXkg<br>
+            필요 소나무 : XXXX그루
+         </div>
+         <!-------------------------->
+         <!-- 냉/난방분야 결과 출력화면 -->
+         <button class="accordion">냉/난방 검사 결과
+            <div class="total">
+               연간 CO2 배출량 :
+            <span id="i_totalAir_co2"></span>g
+            <br>
+            연간 필요 소나무 :
+            <span id="i_totalAir_tree"></span>그루
+            </div>
+         </button>
+         <div class="resource">
+            에어컨 사용 :
+            <span id="i_ans3"></span>g
+            <br>
+            단열재 사용으로 절약한 CO2:
+            <span id="i_ans4"></span>g
+            <br>
+         </div>
+      </div>
+         <!-------------------------->
+         <div class="content">
+         <div class="right">
+         <!-- 전기분야 결과 출력화면 -->
+         <button class="accordion">전기 검사 결과
+            <div class="total">
+               연간 CO2 배출량 :
+            <span id="i_totalElec_co2"></span>kg
+            <br>
+            연간 필요 소나무 :
+            <span id="i_totalElec_tree"></span>그루
+            </div>
+         </button>
+         <div class="resource">
+            TV 시청으로 발생한 CO2 :
+            <span id="i_ansTv"></span>kg
+            <br>
+            컴퓨터 사용으로 발생한 CO2:
+            <span id="i_ansComputer"></span>kg
+            <br>
+            세탁기 사용으로 발생한 CO2:
+            <span id="i_ansWashing"></span>kg
+            <br>
+            사용하지 않는 플러그 뽑아 절약한 CO2:
+            <span id="i_ansPlug"></span>kg            
+         </div>
+         <!-------------------------->
+         <!-- 자원분야 결과 출력화면 -->
+         <button class="accordion">자원 검사 결과
+            <div class="total">
+               연간 CO2 배출량 :
+            <span id="i_resource_result"></span>kg
+            <br>
+            필요 소나무 :
+            <span id="i_need_tree"></span>그루
+            </div>
+         </button>
+         <div class="resource">
+            종이청구서 :
+            <span id="i_ans10"></span>g
+            <br>
+            샤워 :
+            <span id="i_ans11"></span>g
+            <br>
+            음식물 쓰레기 배출 :
+            <span id="i_ans12"></span>g
+            <br>
+            배달음식 주문 :
+            <span id="i_ans13"></span>g            
+         </div>
+      </div>
+   </div>
+         <!-------------------------->
+         
+
+      </section>
+      <script src="js/data.js" charset="utf-8"></script>
+      <script src="js/start.js" charset="utf-8"></script>
+   </div>
+</body>
+
+</html>
