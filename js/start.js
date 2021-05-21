@@ -162,7 +162,7 @@ function calAircondition(){
     
   
  //단위 : 1년 
-  totalAir_tree = (tree3 - tree4)*12; // 3번은 필요한 소나무, 4번은 절약한 소나무여서 뺄셈 계산)
+  totalAir_tree = (tree3 - tree4)*12; // 3번은 필요한 소나무, 4번은 절약한 소나무여서 뺄셈 계산) 
   totalAir_co2 = (co2_3 - co2_4)*12; //  3번은 필요한 co2, 4번은 절약한 co2여서 뺼셈 계산
   
   // 소수점 둘째자리까지 표현
