@@ -34,6 +34,7 @@ function calTraffic() {
   var tree = 3.8;
   var num = select[0]; // 몇 번 선지
   var freq = qnaList[0].a[select[0]].data[0]; // 빈도
+
   var result = Math.round(freq * co2 * 100) / 100;
   var total_tree = Math.round(freq * tree * 100) / 100;
 
@@ -62,8 +63,11 @@ function calTraffic() {
       total_tree
     );
 
-  // 2-1, 2-2번 문항 : 자동차 연료 종류와 연료비
+  var total_co21 = Math.round(freq * co2 * 10) / 10;
+  var total_tree1 = Math.round(freq * tree * 10) / 10;
 
+  // 2-1, 2-2번 문항 : 자동차 연료 종류와 연료비
+  var op = select[1]; // 자동차 이용 여부
   var fuel = select[2]; // 연료 선지
   var cost = qnaList[3].a[select[3]].data[0]; // 연료비
   var num = select[3]; // 연료비 선지
@@ -162,11 +166,42 @@ function calTraffic() {
         total_tree
       );
   }
+
+  var total_co22;
+  var total_tree2;
+
+  if (op == 0) {
+    if (fuel == 0) {
+      // 휘발유
+      // 10000원 기준 co2 발생량과 필요 소나무
+      var base_co2 = 11.8;
+      var base_tree = 1.8;
+      total_co22 = Math.round(base_co2 + 11.7 * (cost - 1) * 10) / 10;
+      total_tree2 = Math.round(base_tree + 1.8 * (cost - 1) * 10) / 10;
+    } else if (fuel == 1) {
+      // 경유
+      var base_co2 = 16.2;
+      var base_tree = 2.5;
+      total_co22 = Math.round(base_co2 + 16.1 * (cost - 1) * 10) / 10;
+      total_tree2 = Math.round(base_tree + 2.4 * (cost - 1) * 10) / 10;
+    } else if (fuel == 2) {
+      // LPG
+      var base_co2 = 27.9;
+      var base_tree = 4.2;
+      total_co22 = Math.round(base_co2 + 27.8 * (cost - 1) * 10) / 10;
+      total_tree2 = Math.round(base_tree + 4.2 * (cost - 1) * 10) / 10;
+    }
+  } else {
+    total_co22 = 0;
+    total_tree2 = 0;
+  }
+
   // 2-3번 문항 : 대중교통 이용 횟수
   var co2 = 469.4;
   var tree = 71.1;
   var num = select[4]; // 몇 번 선지
   var freq = qnaList[4].a[select[4]].data[0]; // 빈도
+
   var result = Math.round(freq * co2 * 100) / 100;
   var total_tree = Math.round(freq * tree * 100) / 100;
 
@@ -195,6 +230,35 @@ function calTraffic() {
       result,
       total_tree
     );
+
+  var total_co23 = Math.round(freq * co2 * 10) / 10;
+  var total_tree3 = Math.round(freq * tree * 10) / 10;
+
+  document.getElementById("i_ans1_co2").innerHTML = total_co21;
+  document.getElementById("i_ans1_tree").innerHTML = total_tree1;
+
+  // 자동차 운행으로 발생되는 값
+  document.getElementById("i_ans2_co2").innerHTML = total_co22;
+  document.getElementById("i_ans2_tree").innerHTML = total_tree2;
+
+  document.getElementById("i_ans3_co2").innerHTML = total_co23;
+  document.getElementById("i_ans3_tree").innerHTML = total_tree3;
+
+  traffic_co2 = Math.round(total_co22 - (total_co21 + total_co23) * 10) / 10;
+  traffic_tree =
+    Math.round(total_tree2 - (total_tree1 + total_tree3) * 10) / 10;
+
+  if (traffic_co2 < 0) {
+    $(".resource").append(
+      `<span>연간 CO2 절감량 : ${
+        traffic_co2 * -1
+      } <br>연간 아끼고 있는 소나무 : ${traffic_tree * -1}그루</span>`
+    );
+  } else {
+    $(".resource").append(
+      `<span>연간 CO2 배출량 : ${traffic_co2} <br>연간 필요한 소나무 : ${traffic_tree}그루</span>`
+    );
+  }
 }
 
 function calAircondition() {
@@ -229,6 +293,13 @@ function calAircondition() {
     tree4 = 0;
     co2_4 = 0;
   }
+
+  console.log("단열재 사용에 따라 절약한 소나무 : ", tree4, "그루");
+  console.log("단열재 사용에 따라 절약한 이산화탄소 : ", co2_4, "kg");
+
+  //단위 : 1년
+  totalAir_tree = (tree3 - tree4) * 12; // 3번은 필요한 소나무, 4번은 절약한 소나무여서 뺄셈 계산)
+  totalAir_co2 = (co2_3 - co2_4) * 12; //  3번은 필요한 co2, 4번은 절약한 co2여서 뺼셈 계산
 
   console.log("단열재 사용에 따라 절약한 소나무 : ", tree4, "그루");
   console.log("단열재 사용에 따라 절약한 이산화탄소 : ", co2_4, "kg");
