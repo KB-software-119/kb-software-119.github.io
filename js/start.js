@@ -158,7 +158,7 @@ function calAircondition(){
 
   if(totalAir_tree < 0) // 에어컨 사용안하고 단열재 사용하는 경우 
   {
-    console.log("현재 냉/난방기 사용습관으로 아끼고 있는 소나무 : ",(-1)*totalAir_tree,"그루")
+    console.log("현재 냉/난방기 사용습관으로 아끼고 있는 소나무 : ",totalAir_tree,"그루")
   }
   else
   {
@@ -176,8 +176,14 @@ function calAircondition(){
 
   document.getElementById("i_ans3").innerHTML=co2_3;
   document.getElementById("i_ans4").innerHTML=co2_4; // 단열재 사용으로 절약한 co2
-  document.getElementById("i_totalAir_co2").innerHTML= totalAir_co2;
-  document.getElementById("i_totalAir_tree").innerHTML= totalAir_tree;
+ // document.getElementById("i_totalAir_co2").innerHTML= totalAir_co2;
+ // document.getElementById("i_totalAir_tree").innerHTML= totalAir_tree;
+ if(totalAir_tree<0){
+  $('#totalAir').append(`<span>연간 CO2 절감량 : ${totalAit_co2*(-1)}kg <br>연간 아끼고 있는 소나무 : ${totalAir_tree*(-1)}그루</span>`);
+}
+else{
+  $('#totalAir').append(`<span>연간 CO2 배출량 : ${totalAir_co2}kg <br>연간 필요한 소나무 : ${totalAir_tree}그루</span>`);
+}
 }
 
 function calElectricity(){
