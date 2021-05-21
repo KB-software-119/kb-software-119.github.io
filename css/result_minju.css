@@ -1,0 +1,71 @@
+:root {
+  /* color */
+  --black-color: #292526;
+  --white-color: #fff;
+  --main-color: #8bc34a;
+  --dark-main-color: #6b9b37;
+  --before-color: #3daf42;
+  --background-color: #f1f8e9;
+}
+
+#result {
+  display: none;
+  background-color: white;
+  width: 80%;
+  border-radius: 20px;
+}
+
+* {
+  /*font-family : 'Do Hyeon', sans-serif;*/
+  font-family: "Jua", sans-serif;
+}
+
+.title_1 {
+  display: flex;
+  justify-content: center;
+}
+
+.total_result {
+  margin-top: 20px;
+  height: 100px;
+  font-size: 24px;
+  text-align: start;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+/*
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+*/
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  text-align: center;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  font-size: 16px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.accordion:hover {
+  background-color: var(--main-color);
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.resource {
+  padding: 0 18px;
+  background-color: var(--background-color);
+  display: none;
+  overflow: hidden;
+  text-align: start;
+}
