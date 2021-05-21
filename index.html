@@ -127,10 +127,62 @@
               연간 총 CO2 배출량 : 000kg <br>
               필요 소나무 : 000그루
            </div>
+           <button type="button" class="link_button" onclick="window.open('https://www.gwanghwamoon1st.go.kr/cmmnty/minus2')">기후환경 및 탄소중립 더보기</button>
+           <br>
+           <br>
+           <br>
+           <br>
+           <hr>
+           <br>
+
+           <div class ="cash_movement">
+              당신에게 추천하는<br>
+              돈이 되는 탄소 중립 실천방안
+           </div>
+           <br>
+           <br>
+           <br>
+           <br>
+           <img src="img/money.png" alt="My Image" width="400" height="400">
+           <br>
+           <br>
+      
+           <button type="button" class="link_button" onclick="window.open('https://ecomileage.seoul.go.kr/home/infomation/whatIsEco.do?menuNo=1')">에코 마일리지</button>
+           <br>
+           <br>
+           <button type="button" class="link_button" onclick="window.open('https://www.alcard.kr/')">알뜰 교통카드 마일리지</button>
+           <br>
+           <br>
+           <button class= "link_button" onclick="showMsg()">브랜드별 혜택보기</button>
+           <div> 
+              <!-- 아래 dialog 태그 영역이 메시지 창 --> 
+             <dialog id="myMsgDialog"> 
+              <h3>1. 카페 프랜차이즈</h3>
+              <h4>폴 바셋(Paul Bassett) : 텀블러 사용시, 500원 할인<br>
+               엔젤리너스(Angel-in-us) : 텀블러 사용시, 400원 할인<br>
+               크리스피 도넛(Krispy Kreme Dougnuts) : 텀블러 사용시, 400원 할인<br>
+              </h4>
+               <input type="button" id="mButton" onclick="closeMsg()" value=" 확 인 " > 
+            </dialog> 
+         </div> 
+         <script>
+            function showMsg(){
+                var dialog = document.getElementById("myMsgDialog"); 
+                dialog.showModal(); 
+                } 
+            function closeMsg(){
+                var dialog = document.getElementById("myMsgDialog");
+                 dialog.close(); 
+               } 
+            </script>
+
+           
 
     </section>
     <script src="js/data.js" charset="utf-8"></script>
     <script src="js/start.js" charset="utf-8"></script>
    </div>
+
+
 </body>
 </html>

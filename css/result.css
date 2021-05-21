@@ -11,6 +11,19 @@
   font-family: "Jua", sans-serif;
 }
 
+.link_button {
+  width: 30rem;
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 30px;
+  background-color: #3e6b0b;
+  color: var(--white-color);
+  border: none;
+  border-radius: 10px;
+  letter-spacing: 6px;
+}
+
+
 .resource {
   border: 2px solid black;
   width: 50%;
@@ -44,3 +57,7 @@
   height: 100px;
   font-size: 30px;
 }
+.cash_movement{
+  font-size: 30px;
+}
+
