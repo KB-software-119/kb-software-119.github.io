@@ -108,8 +108,8 @@ const qnaList = [
     {
       q: '8. 외출 시 또는 자리를 비울 시에 플러그를 뽑는 습관이 있나요?',
       a: [
-        { answer: 'YES'},
-        { answer: 'NO' },
+        { answer: 'YES', data : [1]},
+        { answer: 'NO' , data : [0]},
       ]
     },
     // 4. 자원
