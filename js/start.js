@@ -5,6 +5,14 @@ const result = document.querySelector("#result");
 const endPoint = 16; // 질문 개수
 const select = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // 사용자가 선지를 누를 때마다 어떤 선지를 누른지 저장
 
+var resource_result;
+var resource_need_tree;
+
+var elec_result;
+var need_tree;
+
+var totalAir_co2;
+var totalAir_tree;
 // function calResult(){ // 질문에 대한 대답 중 가장 많이 나온 type을 결과값으로 보여준다
 //   console.log(select);
 //   var result = select.indexOf(Math.max(...select));
@@ -29,39 +37,12 @@ const select = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // 사용자가
 // }
 
 function calTraffic() {
-  // 1번 문항 : 도보/자전거 이용 횟수 (일주일)
+  // 1번 문항 : 도보/자전거 이용 횟수 (연간기준)
   var co2 = 25.1;
   var tree = 3.8;
   var num = select[0]; // 몇 번 선지
   var freq = qnaList[0].a[select[0]].data[0]; // 빈도
   
-  var result = Math.round(freq * co2 * 10) / 10;
-  var total_tree = Math.round(freq * tree * 10) / 10;
-  if (num == 0)
-    console.log(
-      "현재 가까운 거리를 도보나 자전거로 이용하고 있지 않습니다.\
-    주 1회라도 도보나 자전거를 이용한다면 연간 %fkg의 Co2를 저감하며 %f그루의 나무를 아낄 수 있습니다",
-      co2,
-      tree
-    );
-  else if (num >= 1 && num <= 3)
-    console.log(
-      "현재 주 %d번 이상 %d번 미만 가까운 거리를 도보나 자전거로 이용하고 있습니다.\
-    연간 평균 %fkg의 Co2를 저감하며 %f그루의 나무를 아끼고 있습니다",
-      freq - 1,
-      freq + 1,
-      result,
-      total_tree
-    );
-  else
-    console.log(
-      "현재 주 %d번 이상 가까운 거리를 도보나 자전거로 이용하고 있습니다.\
-    연간 최소 %fkg의 Co2를 저감하며 %f그루의 나무를 아끼고 있습니다",
-      freq,
-      result,
-      total_tree
-    );
-
   var total_co21 = Math.round(freq * co2 * 10) / 10;
   var total_tree1 = Math.round(freq * tree * 10) / 10;
 
@@ -69,103 +50,7 @@ function calTraffic() {
   var op = select[1]; // 자동차 이용 여부
   var fuel = select[2]; // 연료 선지
   var cost = qnaList[3].a[select[3]].data[0]; // 연료비
-  var num = select[3]; // 연료비 선지
-
-  if (fuel == 0) {
-    // 휘발유
-    // 10000원 기준 co2 발생량과 필요 소나무
-    var base_co2 = 11.8;
-    var base_tree = 1.8;
-    var total_co2 = Math.round(base_co2 + 11.7 * (cost - 1) * 10) / 10;
-    var total_tree = Math.round(base_tree + 1.8 * (cost - 1) * 10) / 10;
-    if (num == 0)
-      console.log(
-        "현재 최대 %d만원 미만의 연료비를 지출하고 있습니다.\
-      월간 최대 %fkg의 Co2를 발생하고 있으며 이를 상쇄시키려면 %f그루의 나무가 필요합니다",
-        cost,
-        total_co2,
-        total_tree
-      );
-    else if (num >= 1 && num <= 3)
-      console.log(
-        "현재 %d만원 이상 %d만원 미만 연료비를 지출하고 있습니다.\
-      월간 평균 %fkg의 Co2를 발생하고 있으며 이를 상쇄시키려면 %f그루의 나무가 필요합니다",
-        cost - 2.5,
-        cost + 2.5,
-        total_tree
-      );
-    else
-      console.log(
-        "현재 최소 %d만원 이상 연료비를 지출하고 있습니다.\
-      월간 최소 %fkg의 Co2를 발생하고 있으며 이를 상쇄시키려면 %f그루의 나무가 필요합니다",
-        cost,
-        total_co2,
-        total_tree
-      );
-  } else if (fuel == 1) {
-    // 경유
-    var base_co2 = 16.2;
-    var base_tree = 2.5;
-    var total_co2 = Math.round(base_co2 + 16.1 * (cost - 1) * 10) / 10;
-    var total_tree = Math.round(base_tree + 2.4 * (cost - 1) * 10) / 10;
-    if (num == 0)
-      console.log(
-        "현재 최대 %d만원 미만의 연료비를 지출하고 있습니다.\
-      월간 최대 %fkg의 Co2를 발생하고 있으며 이를 상쇄시키려면 %f그루의 나무가 필요합니다",
-        cost,
-        total_co2,
-        total_tree
-      );
-    else if (num >= 1 && num <= 3)
-      console.log(
-        "현재 %d만원 이상 %d만원 미만 연료비를 지출하고 있습니다.\
-      월간 평균 %fkg의 Co2를 발생하고 있으며 이를 상쇄시키려면 %f그루의 나무가 필요합니다",
-        cost - 2.5,
-        cost + 2.5,
-        total_co2,
-        total_tree
-      );
-    else
-      console.log(
-        "현재 최소 %d만원 이상 연료비를 지출하고 있습니다.\
-      월간 최소 %fkg의 Co2를 발생하고 있으며 이를 상쇄시키려면 %f그루의 나무가 필요합니다",
-        cost,
-        total_co2,
-        total_tree
-      );
-  } else if (fuel == 2) {
-    // LPG
-    var base_co2 = 27.9;
-    var base_tree = 4.2;
-    var total_co2 = Math.round(base_co2 + 27.8 * (cost - 1) * 10) / 10;
-    var total_tree = Math.round(base_tree + 4.2 * (cost - 1) * 10) / 10;
-    if (num == 0)
-      console.log(
-        "현재 최대 %d만원 미만의 연료비를 지출하고 있습니다.\
-      월간 최대 %fkg의 Co2를 발생하고 있으며 이를 상쇄시키려면 %f그루의 나무가 필요합니다",
-        cost,
-        total_co2,
-        total_tree
-      );
-    else if (num >= 1 && num <= 3)
-      console.log(
-        "현재 %d만원 이상 %d만원 미만 연료비를 지출하고 있습니다.\
-      월간 평균 %fkg의 Co2를 발생하고 있으며 이를 상쇄시키려면 %f그루의 나무가 필요합니다",
-        cost - 2.5,
-        cost + 2.5,
-        total_co2,
-        total_tree
-      );
-    else
-      console.log(
-        "현재 최소 %d만원 이상 연료비를 지출하고 있습니다.\
-      월간 최소 %fkg의 Co2를 발생하고 있으며 이를 상쇄시키려면 %f그루의 나무가 필요합니다",
-        cost,
-        total_co2,
-        total_tree
-      );
-  }
-
+ 
   var total_co22;
   var total_tree2;
 
@@ -195,40 +80,11 @@ function calTraffic() {
     total_tree2 = 0;
   }
 
-  // 2-3번 문항 : 대중교통 이용 횟수
+  // 2-3번 문항 : 대중교통 이용 횟수(연간기준)
   var co2 = 469.4;
   var tree = 71.1;
   var num = select[4]; // 몇 번 선지
   var freq = qnaList[4].a[select[4]].data[0]; // 빈도
-
-  var result = Math.round(freq * co2 * 100) / 100;
-  var total_tree = Math.round(freq * tree * 100) / 100;
-
-  if (num == 0)
-    console.log(
-      "현재 승용차 대신 대중교통을 이용하고 있지 않습니다.\
-    주 1회라도 대중교통을 이용한다면 연간 %fkg의 Co2를 저감하며 %f그루의 나무를 아낄 수 있습니다",
-      co2,
-      tree
-    );
-  else if (num == 1)
-    console.log(
-      "현재 주 %d번 이상 %d번 미만 승용차 대신 대중교통을 이용하고 있습니다.\
-    연간 평균 %fkg의 Co2를 저감하며 %f그루의 나무를 아낄 수 있습니다",
-      freq - 2,
-      freq + 2,
-      result,
-      total_tree
-    );
-  else
-    console.log(
-      "현재 주 %d번 이상 %d번 미만 승용차 대신 대중교통을 이용하고 있습니다.\
-    연간 평균 %fkg의 Co2를 저감하며 %f그루의 나무를 아낄 수 있습니다",
-      freq - 2.5,
-      freq + 2.5,
-      result,
-      total_tree
-    );
 
   var total_co23 = Math.round(freq * co2 * 10) / 10;
   var total_tree3 = Math.round(freq * tree * 10) / 10;
@@ -263,8 +119,6 @@ function calAircondition() {
   var co2_3; //3번 문항 발생시킨 co2
   var tree4; //4번 문항 절약한 소나무
   var co2_4; //4번 문항 절약한 co2
-  var totalAir_tree; // total 소비한 소나무
-  var totalAir_co2; //total 발생시킨 co2
   var if_co2;  // 조건문에 넣을 값
   var if_tree; // 조건문에 넣을 값
   
@@ -386,7 +240,7 @@ function calElectricity() {
   }
 
   //전기분야 연간 CO2배출량 및 필요 소나무 계산
-  var elec_result = 0;
+  elec_result = 0;
 
   for (var i = 0; i < 3; i++) {
     elec_result += ans[i];
@@ -405,7 +259,7 @@ function calElectricity() {
   // elec_result = elec_result.toFixed(1);
   // need_tree = need_tree.toFixed(1);
   console.log("전기분야 1주일 간 이산화탄소 배출량 : ", elec_result, "kg");
-  var need_tree = Math.round(elec_result / 5); //이산화 탄소 배출량 0.5kg당 필요 소나무 0.1그루
+  need_tree = Math.round(elec_result / 5); //이산화 탄소 배출량 0.5kg당 필요 소나무 0.1그루
   need_tree = need_tree.toFixed(1);
   console.log("사용한 전기 때문에 필요한 소나무 : ", need_tree, "그루");
 
@@ -449,19 +303,34 @@ function calResource() {
   //console.log("배달음식 주문 횟수에 따라 발생하는 이산화탄소 : ",ans13,"g");
 
   //자원분야 연간 CO2배출량 및 필요 소나무 계산
-  var resource_result =
+  resource_result =
     Math.round(
       ((ans10 * 12 + ans11 * 243 + ans12 * 52 + ans13 * 52) / 1000) * 10
     ) / 10;
   //console.log("자원분야 1년간 이산화탄소 배출량 : ",resource_result,"kg");
-  var need_tree = Math.round(((resource_result / 6.6) * 10) / 10); //이산화 탄소 배출량 6.6kg당 필요 소나무 1그루
+  resource_need_tree = Math.round(((resource_result / 6.6) * 10) / 10); //이산화 탄소 배출량 6.6kg당 필요 소나무 1그루
   //console.log("필요한 소나무 : ",need_tree,"그루");
   document.getElementById("i_ans10").innerHTML = ans10 / 1000;
   document.getElementById("i_ans11").innerHTML = ans11 / 1000;
   document.getElementById("i_ans12").innerHTML = ans12 / 1000;
   document.getElementById("i_ans13").innerHTML = ans13 / 1000;
   document.getElementById("i_resource_result").innerHTML = resource_result;
-  document.getElementById("i_need_tree").innerHTML = need_tree;
+  document.getElementById("i_need_tree").innerHTML = resource_need_tree;
+}
+
+function calTotal(){
+  var Total_result; 
+  var Total_need_tree;
+
+  calAircondition();
+  calElectricity();
+  calResource();
+
+  Total_result = elec_result*1 + totalAir_co2*1 + resource_result*1;
+  Total_need_tree = need_tree*1 + totalAir_tree*1 + resource_need_tree*1;
+
+  document.getElementById("total_resultt").innerHTML = Total_result;
+  document.getElementById("total_needd").innerHTML = Total_need_tree;
 }
 
 function goResult() {
@@ -479,6 +348,7 @@ function goResult() {
   calAircondition();
   calElectricity();
   calResource();
+  calTotal();
   result_accordian();
 }
 
