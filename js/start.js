@@ -103,9 +103,7 @@ function calTraffic() {
 
   if (traffic_co2 < 0) {
     $("#traffic").append(
-      `<span>연간 CO2 절감량 : ${
-        traffic_co2 * -1
-      }kg <br>연간 아끼고 있는 소나무 : ${traffic_tree * -1}그루</span>`
+      `<span>연간 CO2 절감량 : ${traffic_co2 * -1}kg <br>연간 아끼고 있는 소나무 : ${traffic_tree * -1}그루</span>`
     );
   } else {
     $("#traffic").append(
@@ -190,15 +188,15 @@ function calAircondition() {
   //document.getElementById("i_totalAir_co2").innerHTML= totalAir_co2;
   //document.getElementById("i_totalAir_tree").innerHTML= totalAir_tree;
 
- if(if_co2<0){
-  $('#totalAir').append(`<span>연간 CO2 절감량 : ${if_co2*(-1)}kg <br></span>`);
-}
- if(if_tree<0){
-  $('#totalAir').append(`<span>연간 아낀 소나무 : ${if_tree*(-1)}그루 <br> </span>`); 
-}
- else{
-  $('#totalAir').append(`<span>연간 CO2 배출량 : ${if_co2}kg <br>연간 필요 소나무 : ${totalAir_tree}그루</span>`);
-}
+  if(if_co2<0){
+    $('#totalAir').append(`<span>연간 CO2 절감량 : ${if_co2*(-1)}kg <br></span>`);
+  }
+  if(if_tree<0){
+    $('#totalAir').append(`<span>연간 아낀 소나무 : ${if_tree*(-1)}그루 <br> </span>`); 
+  }
+  else{
+    $('#totalAir').append(`<span>연간 CO2 배출량 : ${if_co2}kg <br>연간 필요 소나무 : ${totalAir_tree}그루</span>`);
+  }
 }
 
 function calElectricity() {
