@@ -326,6 +326,10 @@ function calTotal(){
 
   Total_result = elec_result*1 + totalAir_co2*1 + resource_result*1;
   Total_need_tree = need_tree*1 + totalAir_tree*1 + resource_need_tree*1;
+  //소수점 첫째자리 표현
+  Total_result=Total_result.toFixed(1);
+  Total_need_tree=Total_need_tree.toFixed(1);
+
 
   document.getElementById("total_resultt").innerHTML = Total_result;
   document.getElementById("total_needd").innerHTML = Total_need_tree;
