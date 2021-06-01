@@ -1,5 +1,5 @@
 #main {
-  background-color: white;
+  background-color: None;
   width: 30%;
   text-align: center;
   border-radius: 20px;
@@ -15,8 +15,16 @@
   color: var(--white-color);
   border: none;
   letter-spacing: 6px;
+
 }
 
 .aa {
   color : black;
+}
+body{
+  background-image: url(../img/main_img.jpg);
+  background-repeat: no-repeat;
+  background-size: 150rem 150rem;
+  background-position: center;
+  
 }
