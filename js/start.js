@@ -90,9 +90,9 @@ function calTraffic() {
   var total_tree3 = Math.round(freq * tree * 10) / 10;
 
   traffic_co2 =
-    Math.round(total_co22 * 12 - (total_co21 + total_co23) * 10) / 10;
+    Math.round(((total_co22 * 12) - (total_co21 + total_co23))*10) / 10;
   traffic_tree =
-    Math.round(total_tree2 * 12 - (total_tree1 + total_tree3) * 10) / 10;
+    Math.round(((total_tree2 * 12) - (total_tree1 + total_tree3)) * 10) / 10;
 
   document.getElementById("i_ans1_co2").innerHTML = total_co21;
   document.getElementById("i_ans1_tree").innerHTML = total_tree1; 
@@ -322,17 +322,47 @@ function calTotal(){
   var Total_result; 
   var Total_need_tree;
 
+  calTraffic();
   calAircondition();
   calElectricity();
   calResource();
 
-  Total_result = elec_result*1 + totalAir_co2*1 + resource_result*1;
-  Total_need_tree = need_tree*1 + totalAir_tree*1 + resource_need_tree*1;
+  Total_result = traffic_co2*1 + elec_result*1 + totalAir_co2*1 + resource_result*1;
+  Total_need_tree =  traffic_tree*1 + need_tree*1 + totalAir_tree*1 + resource_need_tree*1;
   //소수점 첫째자리 표현
   Total_result=Total_result.toFixed(1);
   Total_need_tree=Total_need_tree.toFixed(1);
+  /*
+  Total_result 가 (CO2 배출량) 
+  
+   자동차 사용하는 경우 (21049 kg)
+  ~ 2631        : 1등급
+  2631 ~ 5262   : 2등급
+  5262 ~ 7893   : 3등급
+  7893 ~ 10524  : 4등급
+  10524 ~ 13155 : 5등급
+  13155 ~ 15786 : 6등급
+  15786 ~ 18417 : 7등급
+  18417 ~       : 8등급
 
-
+  
+  if(Total_result <2631)
+  {}
+  else if(Total_result >=2631 && Total_result<5262)
+  {}
+  else if(Total_result>=5262 && Total_result<7893 )
+  {}
+  else if(Total_result>=7893 && Total_result< 10524)
+  {}
+  else if(Total_result>=10524 && Total_result< 13155 )
+  {}
+  else if(Total_result>=13155  && Total_result< 15786)
+  {}
+  else if(Total_result>= 15786 && Total_result<18417 )
+  {}
+  else if(Total_result>=18417)
+  {}s
+*/
   document.getElementById("total_resultt").innerHTML = Total_result;
   document.getElementById("total_needd").innerHTML = Total_need_tree;
 }
