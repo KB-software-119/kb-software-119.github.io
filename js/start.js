@@ -344,22 +344,22 @@ function calTotal(){
   18417 ~       : 8등급
 
   
-  if(Total_result <2631)
+  if(Total_result <2631) //환경 수호신
   {}
-  else if(Total_result >=2631 && Total_result<5262)
+  else if(Total_result >=2631 && Total_result<5262) //환경 선구자
   {}
-  else if(Total_result>=5262 && Total_result<7893 )
-  {}
-  else if(Total_result>=7893 && Total_result< 10524)
-  {}
-  else if(Total_result>=10524 && Total_result< 13155 )
-  {}
-  else if(Total_result>=13155  && Total_result< 15786)
-  {}
-  else if(Total_result>= 15786 && Total_result<18417 )
-  {}
-  else if(Total_result>=18417)
-  {}s
+  else if(Total_result>=5262 && Total_result<7893 ) //환경 지킴이
+  {} 
+  else if(Total_result>=7893 && Total_result< 10524)//환경 모기
+  {} 
+  else if(Total_result>=10524 && Total_result< 13155 )//환경 폭행미수
+  {} 
+  else if(Total_result>=13155  && Total_result< 15786)//환경 살인미수
+  {} 
+  else if(Total_result>= 15786 && Total_result<18417 )//환경 폭행범
+  {} 
+  else if(Total_result>=18417)//환경 살인자
+  {} 
 */
   document.getElementById("total_resultt").innerHTML = Total_result;
   document.getElementById("total_needd").innerHTML = Total_need_tree;
