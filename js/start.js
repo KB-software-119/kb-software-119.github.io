@@ -406,6 +406,7 @@ function goResult() {
   result_accordian();
 }
 
+//실천방안에 관한 함수
 function showPlan(){
   var op = select[1]; // 자동차 사용여부 체크 
   
@@ -430,7 +431,31 @@ function showPlan(){
     $(".air_plan").append(`<span>단열재를 사용하지 않는 당신을 위한 실천방안</span><br><br>`);
     $(".air_plan").append(`<span>${doList[1].air_no[1].heat_no[0].do}`);
   }
-
+  else if(op!=0 && op2==0) // 에어컨 O + 단열재 O - air_yes heat_yes
+  {
+    $(".air_plan").append(`<span>에어컨을 사용하는 당신을 위한 실천방안</span><br><br>`);
+    $(".air_plan").append(`<span>${doList[1].air_yes[1].heat_yes[0].do}`);
+  }
+  
+  else if(op!=0 && op2==1) // 에어컨 O + 단열재 x - air_yes heat_no
+  {
+    $(".air_plan").append(`<span>에어컨을 사용하고 단열재를 사용하지 않는 당신을 위한 실천방안</span><br><br>`);
+    $(".air_plan").append(`<span>${1} : ${doList[1].air_yes[1].heat_no[0].do}</span><br>`);
+    $(".air_plan").append(`<span>${2} : ${doList[1].air_yes[1].heat_no[1].do}</span><br>`);
+  
+  }
+  //전기분야 실천방안
+  $(".electric_plan").append(`<span>당신을 위한 전기절약 관련 실천방안</span><br><br>`);
+  for(i=0;i<doList[2].electric.length;i++){
+    $(".electric_plan").append(`<span>${i+1} : ${doList[2].electric[i].do}</span><br>`);
+  }
+ 
+  //자원분야 실천방안
+  $(".resource_plan").append(`<span> 당신을 위한 생활 속의 실천방안</span><br><br>`);
+  for(i=0;i<doList[3].resource.length;i++){
+    $(".resource_plan").append(`<span>${i+1} : ${doList[3].resource[i].do}</span><br>`);
+  }
+ 
 }
 function addAnswer(answerText, qIdx, idx) {
   var a = document.querySelector(".answerBox");
