@@ -36,6 +36,21 @@ var totalAir_tree;
 //   resultDesc.innerHTML = infoList[point].desc;
 // }
 
+var imgArray=new Array();
+  imgArray[0]="img/carbon_zero.jpg"; 
+  imgArray[1]="img/qna_pic2.jpg"; 
+  imgArray[2]="img/qna_pic3.jpg";
+  imgArray[3]="img/qna_pic4.jpg";
+  
+
+function showImage(){ 
+  var imgNum=Math.floor(Math.random()*4); 
+  var objImg=document.getElementById("introimg"); 
+  objImg.src=imgArray[imgNum]; 
+  setTimeout(showImage,3000); 
+}
+
+
 function calTraffic() {
   // 1번 문항 : 도보/자전거 이용 횟수 (연간기준)
   var co2 = 25.1;

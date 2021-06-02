@@ -53,9 +53,9 @@
    <!-- accordion 설정-->
 </head>
 
-<body>
+<body onload="showImage()">
    <div class="container">
-      <section id="main" class="mx-auto mb-5 py-3">
+      <section id="main" class="mx-auto">
          <div class="title_1">
             <h1><br>탄소 소비 습관 테스트</h1>
          </div>
@@ -71,7 +71,9 @@
             <button type="button" class="btn-success" onclick="js:begin()">시작하기</button>
          </div>
       </section>
-      <section id="qna">
+      <section id="qna" >
+         <img id="introimg">
+         
          <div class="status mx-auto mt-5">
             <div class="statusBar">
             </div>
@@ -83,9 +85,10 @@
 
          </div>
       </section>
-      <section id="result" class="mx-auto my-5 py-5 px-3">
+      <section id="result" class="mx-auto">
          <div class="title_1">
             <h1>검사 결과</h1>
+               
             <div class="result_img">
 
             </div>
@@ -231,7 +234,7 @@
          </div>
 
          <button type="button" class="link_button"
-            onclick="window.open('https://www.gwanghwamoon1st.go.kr/cmmnty/minus2')">기후환경<br>및 탄소중립 더보기</button>
+            onclick="window.open('https://www.gihoo.or.kr/netzero/main/index.do')">탄소중립 더보기</button>
          <br>
          <br>
          <br>

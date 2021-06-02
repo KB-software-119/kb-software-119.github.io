@@ -1,5 +1,6 @@
 :root {
   /* color */
+  
   --black-color: #292526;
   --white-color: #fff;
   --main-color: #8bc34a;
@@ -14,9 +15,8 @@ body {
   background-color: white;
 }
 
-.title_1 {
-  padding: 12px;
-  margin-bottom: 40px;
+.title_1{
+  font-size: 44px;
 }
 
 .title_2 {
