@@ -425,7 +425,8 @@ function showPlan(){
   var op2 = select[7];  // 단열재 사용여부 체크
   
   if(op==0 && op2==0){   //에어컨 x + 단열재 o - air_no heat_yes 
-    $(".air_plan").append(`<span>${doList[1].air_no[0].heat_yes[0].do}`);
+    //$(".air_plan").append(`<span>${doList[1].air_no[0].heat_yes[0].do}`)
+    ; //에어컨 사용안하고 단열재 사용하면 제시해줄 실천방안이 마땅히 없음.
   }
   else if(op==0 && op2==1){   //에어컨 X + 단열재 X - air_no heat_no
     $(".air_plan").append(`<span>단열재를 사용하지 않는 당신을 위한 실천방안</span><br><br>`);
