@@ -16,12 +16,18 @@ body {
 }
 
 .title_1{
-  font-size: 44px;
+  
 }
 
 .title_2 {
-  font-size: 26px;
+  font-size: 60px;
+  
+}
+.title_2_1{
+  font-size:24px;
+  color: #dbdbdb
 }
 .wrap {
   animation: up-down 1.4s infinite ease-in-out alternate;
+  margin-top: 2rem;
 }

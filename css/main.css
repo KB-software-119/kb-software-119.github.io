@@ -20,3 +20,15 @@
 .aa {
   color : black;
 }
+
+.img_main{
+  background-size: 10px;
+  height: 8rem;
+  width: 30rem;
+  transform: scaleX(-1);
+}
+.img_main2{
+  background-size: 10px;
+  height: 8rem;
+  width: 30rem;
+}
