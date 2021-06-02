@@ -325,42 +325,66 @@ function calTotal(){
   calElectricity();
   calResource();
 
-  Total_result = traffic_co2*1 + elec_result*1 + totalAir_co2*1 + resource_result*1;
-  Total_need_tree =  traffic_tree*1 + need_tree*1 + totalAir_tree*1 + resource_need_tree*1;
+  Total_result = traffic_co2*1 + totalAir_co2*1 + elec_result*1 + resource_result*1;
+  Total_need_tree =  traffic_tree*1 + totalAir_tree*1 + need_tree*1 + resource_need_tree*1;
   //소수점 첫째자리 표현
   Total_result=Total_result.toFixed(1);
   Total_need_tree=Total_need_tree.toFixed(1);
+  
   /*
-  Total_result 가 (CO2 배출량) 
-  
-   자동차 사용하는 경우 (21049 kg)
-  ~ 2631        : 1등급
-  2631 ~ 5262   : 2등급
-  5262 ~ 7893   : 3등급
-  7893 ~ 10524  : 4등급
-  10524 ~ 13155 : 5등급
-  13155 ~ 15786 : 6등급
-  15786 ~ 18417 : 7등급
-  18417 ~       : 8등급
+    Total_result 가 (CO2 배출량) 
+    
+    자동차 사용하는 경우 (21049 kg)
+    ~ 2631        : 1등급
+    2631 ~ 5262   : 2등급
+    5262 ~ 7893   : 3등급
+    7893 ~ 10524  : 4등급
+    10524 ~ 13155 : 5등급
+    13155 ~ 15786 : 6등급
+    15786 ~ 18417 : 7등급
+    18417 ~       : 8등급
+  */
+  console.log(Total_result, Total_need_tree)
 
-  
-  if(Total_result <2631) //환경 수호신
-  {}
-  else if(Total_result >=2631 && Total_result<5262) //환경 선구자
-  {}
-  else if(Total_result>=5262 && Total_result<7893 ) //환경 지킴이
-  {} 
-  else if(Total_result>=7893 && Total_result< 10524)//환경 모기
-  {} 
-  else if(Total_result>=10524 && Total_result< 13155 )//환경 폭행미수
-  {} 
-  else if(Total_result>=13155  && Total_result< 15786)//환경 살인미수
-  {} 
-  else if(Total_result>= 15786 && Total_result<18417 )//환경 폭행범
-  {} 
-  else if(Total_result>=18417)//환경 살인자
-  {} 
-*/
+
+  if(Total_result <2631)
+  {
+    $('.result_img').append(`<img src="../img/carbo.png"/>`);
+  }
+  else if(Total_result >=2631 && Total_result<5262)
+  {
+    $('.result_img').append(`<img src="../img/carbo.png"/>`);
+  }
+  else if(Total_result>=5262 && Total_result<7893 )
+  {
+    $('.result_img').append(`<img src="../img/carbo.png"/>`);
+  }
+  else if(Total_result>=7893 && Total_result< 10524)
+  {
+    $('.result_img').append(`<img src="../img/carbo.png"/>`);
+  }
+  else if(Total_result>=10524 && Total_result< 13155 )
+  {
+    $('.result_img').append(`<img src="../img/carbo.png"/>`);
+
+  }
+  else if(Total_result>=13155  && Total_result< 15786)
+  {
+    $('.result_img').append(`<img src="../img/carbo.png"/>`);
+
+  }
+  else if(Total_result>= 15786 && Total_result<18417 )
+  {
+    $('.result_img').append(`<img src="../img/carbo.png"/>`);
+
+  }
+  else if(Total_result>=18417)
+  {
+    $('.result_img').append(`<img src="../img/carbo.png"/>`);
+
+  }
+
+
   document.getElementById("total_resultt").innerHTML = Total_result;
   document.getElementById("total_needd").innerHTML = Total_need_tree;
 }

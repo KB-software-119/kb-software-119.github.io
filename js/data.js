@@ -4,9 +4,9 @@ const qnaList = [
   {
     q: "1. 일주일 기준 가까운 거리를 이동할 때 도보나 자전거를 이용하는 횟수는? ",
     a: [
-      { answer: "이용하지 않는다", data: [0] },
-      { answer: "1회 이상 3회 미만", data: [2] },
-      { answer: "3회 이상 5회 미만", data: [4] },
+      { answer: "이용하지 않는다", data: [0], value:[0] },
+      { answer: "1회 이상 3회 미만", data: [2], value:[2]},
+      { answer: "3회 이상 5회 미만", data: [4], value:[4] },
       { answer: "5회 이상 7회 미만", data: [6] },
       { answer: "7회 이상", data: [7] },
     ],
