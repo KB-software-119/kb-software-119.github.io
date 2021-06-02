@@ -350,6 +350,7 @@ function calTotal(){
   if(Total_result <2631)
   {
     $('.result_img').append(`<img src="../img/carbo.png"/>`);
+    // 유형 이름 출력
   }
   else if(Total_result >=2631 && Total_result<5262)
   {
@@ -366,22 +367,18 @@ function calTotal(){
   else if(Total_result>=10524 && Total_result< 13155 )
   {
     $('.result_img').append(`<img src="../img/carbo.png"/>`);
-
   }
   else if(Total_result>=13155  && Total_result< 15786)
   {
     $('.result_img').append(`<img src="../img/carbo.png"/>`);
-
   }
   else if(Total_result>= 15786 && Total_result<18417 )
   {
     $('.result_img').append(`<img src="../img/carbo.png"/>`);
-
   }
   else if(Total_result>=18417)
   {
     $('.result_img').append(`<img src="../img/carbo.png"/>`);
-
   }
 
 
@@ -405,9 +402,36 @@ function goResult() {
   calElectricity();
   calResource();
   calTotal();
+  showPlan();
   result_accordian();
 }
 
+function showPlan(){
+  var op = select[1]; // 자동차 사용여부 체크 
+  
+  if(op==0){ // 자동차 운행 O
+    $(".traffic_plan").append(`<span>자동차 운행하는 당신을 위한 실천방안</span><br><br>`);
+    for(i=0;i<doList[0].car_yes.length;i++){
+      $(".traffic_plan").append(`<span>${i+1} : ${doList[0].car_yes[i].do}</span><br>`);
+    }
+  }
+  else{ // 자동차 운행 X
+    $(".traffic_plan").append(`<span>자동차를 운행하지 않는 당신을 위한 실천방안</span><br><br>`);
+    $(".traffic_plan").append(`<span>${doList[0].car_no[0].do}`);
+  }
+
+  var op = select[5]; // 에어컨 사용여부 체크
+  var op2 = select[7];  // 단열재 사용여부 체크
+  
+  if(op==0 && op2==0){   //에어컨 x + 단열재 o - air_no heat_yes 
+    $(".air_plan").append(`<span>${doList[1].air_no[0].heat_yes[0].do}`);
+  }
+  else if(op==0 && op2==1){   //에어컨 X + 단열재 X - air_no heat_no
+    $(".air_plan").append(`<span>단열재를 사용하지 않는 당신을 위한 실천방안</span><br><br>`);
+    $(".air_plan").append(`<span>${doList[1].air_no[1].heat_no[0].do}`);
+  }
+
+}
 function addAnswer(answerText, qIdx, idx) {
   var a = document.querySelector(".answerBox");
   var answer = document.createElement("button"); // button을 만들어서 answer변수에 담게 된다
