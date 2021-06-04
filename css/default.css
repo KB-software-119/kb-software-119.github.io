@@ -8,25 +8,9 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Jua", sans-serif;
+  font-family: 'Gothic A1', sans-serif;
 }
 
-body {
-  background-color: white;
-}
-
-.title_1{
-  
-}
-
-.title_2 {
-  font-size: 60px;
-  
-}
-.title_2_1{
-  font-size:24px;
-  color: #dbdbdb
-}
 .wrap {
   animation: up-down 1.4s infinite ease-in-out alternate;
   margin-top: 2rem;

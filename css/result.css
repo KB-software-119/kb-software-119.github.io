@@ -10,8 +10,9 @@
 }
 
 #result {
+  font-family: 'Gothic A1', sans-serif;
   display: none;
-  background-color: white;
+  background-color: #D8E6E7 !important;
   width: 80%;
   text-align: center;
   border-radius: 20px;
@@ -19,7 +20,7 @@
 
 * {
   /*font-family : 'Do Hyeon', sans-serif;*/
-  font-family: "Jua", sans-serif;
+  font-family: 'Gothic A1', sans-serif;
 }
 
 .link_button {
@@ -39,10 +40,11 @@
   flex-direction: column;
   justify-content: space-around;
   width: 70%;
+  margin-top : -200px;
+  margin-bottom : -200px;
 }
 
-.panel-default,
-.panel-heading {
+.panel-default{
   background-color: #eee;
   color: #444;
   cursor: pointer;
@@ -54,11 +56,15 @@
   font-size: 16px;
   margin: 4px 0px;
 }
+.panel-heading{
+  background-color: black;
+  color : white;
+}
 
 .active,
 .panel-default:hover {
   width: 100%;
-  background-color: var(--main-color);
+  background-color: #9DC3C1;
 }
 
 .panel-body {
@@ -69,7 +75,54 @@
   margin-top: 20px;
   height: 100px;
   font-size: 30px;
+  border : none;
+  border-radius: 30px;
+  padding-top : 8.5px;
+  /* background-color: teal; */
+  width : 60%;
+  /* margin-left : 180px; */
+  margin-left :auto;
+  margin-right : auto;
+  /* color: white; */
+  font-weight: 500;
+  color : #6E7783;
 }
 .cash_movement {
   font-size: 30px;
+  font-weight: 500;
+  color : #6E7783;
+}
+
+.helpful {
+  font-size: 30px;
+  font-weight: 500;
+  color : #6E7783;
+}
+
+.title_1{
+  color : #6E7783;
+  font-size: 50px;
+  font-family: 'Gothic A1', sans-serif;
+  font-weight: 700;
+  margin-top: 30px;
+}
+
+.air_plan,
+.traffic_plan,
+.resource_plan,
+.electric_plan{
+  /* background-color : #9DC3C1; */
+  color : #6E7783;
+  border-radius: 20px;
+  width : 70%;
+  margin-left :auto;
+  margin-right : auto;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+
+.link_button{
+  background-color: teal;
+  color : white;
 }

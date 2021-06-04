@@ -37,18 +37,28 @@ var totalAir_tree;
 // }
 
 var imgArray=new Array();
-  imgArray[0]="img/carbon_zero.jpg"; 
-  imgArray[1]="img/qna_pic2.jpg"; 
-  imgArray[2]="img/qna_pic3.jpg";
-  imgArray[3]="img/qna_pic4.jpg";
+  imgArray[0]="img/qna1.png"; 
+  imgArray[1]="img/qna2.png"; 
+  imgArray[2]="img/qna2_1.png";
+  imgArray[3]="img/qna2_2.png";
+  imgArray[4]="img/qna2_3.png"; 
+  imgArray[5]="img/qna3.png"; 
+  imgArray[6]="img/qna3_1.png"; 
+  imgArray[7]="img/qna4.png"; 
+  imgArray[8]="img/qna5.png"; 
+  imgArray[9]="img/qna6.png"; 
+  imgArray[10]="img/qna7.png"; 
+  imgArray[11]="img/qna8.png"; 
+  imgArray[12]="img/qna9.png"; 
+  imgArray[13]="img/qna10.png"; 
+  imgArray[14]="img/qna11.png"; 
+  imgArray[15]="img/qna12.png"; 
   
 
-function showImage(){ 
-  var imgNum=Math.floor(Math.random()*4); 
-  var objImg=document.getElementById("introimg"); 
-  objImg.src=imgArray[imgNum]; 
-  setTimeout(showImage,3000); 
-}
+// function showImage(){ 
+//   var objImg=document.getElementById("introimg"); 
+//   objImg.src=imgArray[0]; 
+// }
 
 
 function calTraffic() {
@@ -364,36 +374,44 @@ function calTotal(){
 
   if(Total_result <2631)
   {
-    $('.result_img').append(`<img src="../img/carbo.png"/>`);
+    $('.result_img').append(`<img src="img/result1.png" style="width:300px;height:300px"/>`);
+    $('.result_type').text('1등급 환경 수호신')
     // 유형 이름 출력
   }
   else if(Total_result >=2631 && Total_result<5262)
   {
-    $('.result_img').append(`<img src="../img/carbo.png"/>`);
+    $('.result_img').append(`<img src="img/result2.png" style="width:300px;height:300px"/>`);
+    $('.result_type').text('2등급 환경 선구자')
   }
   else if(Total_result>=5262 && Total_result<7893 )
   {
-    $('.result_img').append(`<img src="../img/carbo.png"/>`);
+    $('.result_img').append(`<img src="img/result3.png" style="width:300px;height:300px"/>`);
+    $('.result_type').text('3등급 환경 지키미')
   }
   else if(Total_result>=7893 && Total_result< 10524)
   {
-    $('.result_img').append(`<img src="../img/carbo.png"/>`);
+    $('.result_img').append(`<img src="img/result4.png" style="width:300px;height:300px"/>`);
+    $('.result_type').text('4등급 환경 방관자')
   }
   else if(Total_result>=10524 && Total_result< 13155 )
   {
-    $('.result_img').append(`<img src="../img/carbo.png"/>`);
+    $('.result_img').append(`<img src="img/result5.png" style="width:300px;height:300px"/>`);
+    $('.result_type').text('5등급 환경 무식자')
   }
   else if(Total_result>=13155  && Total_result< 15786)
   {
-    $('.result_img').append(`<img src="../img/carbo.png"/>`);
+    $('.result_img').append(`<img src="img/result6.png" style="width:300px;height:300px"/>`);
+    $('.result_type').text('6등급 환경 모기')
   }
   else if(Total_result>= 15786 && Total_result<18417 )
   {
-    $('.result_img').append(`<img src="../img/carbo.png"/>`);
+    $('.result_img').append(`<img src="img/result7.png" style="width:300px;height:300px"/>`);
+    $('.result_type').text('7등급 환경 파괴범')
   }
   else if(Total_result>=18417)
   {
-    $('.result_img').append(`<img src="../img/carbo.png"/>`);
+    $('.result_img').append(`<img src="img/result8.png" style="width:300px;height:300px"/>`);
+    $('.result_type').text('8등급 환경 블랙리스트')
   }
 
 
@@ -426,48 +444,44 @@ function showPlan(){
   var op = select[1]; // 자동차 사용여부 체크 
   
   if(op==0){ // 자동차 운행 O
-    $(".traffic_plan").append(`<span>자동차 운행하는 당신을 위한 실천방안</span><br><br>`);
+    $(".traffic_plan").append(`<span><자동차 운행하는 당신을 위한 실천방안></span><br><br>`);
     for(i=0;i<doList[0].car_yes.length;i++){
       $(".traffic_plan").append(`<span>${i+1} : ${doList[0].car_yes[i].do}</span><br>`);
     }
   }
   else{ // 자동차 운행 X
-    $(".traffic_plan").append(`<span>자동차를 운행하지 않는 당신을 위한 실천방안</span><br><br>`);
-    $(".traffic_plan").append(`<span>${doList[0].car_no[0].do}`);
+    $(".traffic_plan").append(`<span><자동차를 운행하지 않는 당신을 위한 실천방안></span><br><br>`);
+    $(".traffic_plan").append(`<span>1 : ${doList[0].car_no[0].do}`);
   }
 
   var op = select[5]; // 에어컨 사용여부 체크
   var op2 = select[7];  // 단열재 사용여부 체크
   
-  if(op==0 && op2==0){   //에어컨 x + 단열재 o - air_no heat_yes 
-    //$(".air_plan").append(`<span>${doList[1].air_no[0].heat_yes[0].do}`)
-    ; //에어컨 사용안하고 단열재 사용하면 제시해줄 실천방안이 마땅히 없음.
-  }
-  else if(op==0 && op2==1){   //에어컨 X + 단열재 X - air_no heat_no
-    $(".air_plan").append(`<span>단열재를 사용하지 않는 당신을 위한 실천방안</span><br><br>`);
+  if(op==0 && op2==1){   //에어컨 X + 단열재 X - air_no heat_no
+    $(".air_plan").append(`<span><단열재를 사용하지 않는 당신을 위한 실천방안></span><br><br>`);
     $(".air_plan").append(`<span>${doList[1].air_no[1].heat_no[0].do}`);
   }
   else if(op!=0 && op2==0) // 에어컨 O + 단열재 O - air_yes heat_yes
   {
-    $(".air_plan").append(`<span>에어컨을 사용하는 당신을 위한 실천방안</span><br><br>`);
+    $(".air_plan").append(`<span><에어컨을 사용하는 당신을 위한 실천방안></span><br><br>`);
     $(".air_plan").append(`<span>${doList[1].air_yes[1].heat_yes[0].do}`);
   }
   
   else if(op!=0 && op2==1) // 에어컨 O + 단열재 x - air_yes heat_no
   {
-    $(".air_plan").append(`<span>에어컨을 사용하고 단열재를 사용하지 않는 당신을 위한 실천방안</span><br><br>`);
+    $(".air_plan").append(`<span><에어컨을 사용하고 단열재를 사용하지 않는 당신을 위한 실천방안></span><br><br>`);
     $(".air_plan").append(`<span>${1} : ${doList[1].air_yes[1].heat_no[0].do}</span><br>`);
     $(".air_plan").append(`<span>${2} : ${doList[1].air_yes[1].heat_no[1].do}</span><br>`);
   
   }
   //전기분야 실천방안
-  $(".electric_plan").append(`<span>당신을 위한 전기절약 관련 실천방안</span><br><br>`);
+  $(".electric_plan").append(`<span><당신을 위한 전기절약 관련 실천방안></span><br><br>`);
   for(i=0;i<doList[2].electric.length;i++){
     $(".electric_plan").append(`<span>${i+1} : ${doList[2].electric[i].do}</span><br>`);
   }
  
   //자원분야 실천방안
-  $(".resource_plan").append(`<span> 당신을 위한 생활 속의 실천방안</span><br><br>`);
+  $(".resource_plan").append(`<span><당신을 위한 생활 속의 실천방안></span><br><br>`);
   for(i=0;i<doList[3].resource.length;i++){
     $(".resource_plan").append(`<span>${i+1} : ${doList[3].resource[i].do}</span><br>`);
   }
@@ -530,6 +544,9 @@ function goNext(qIdx) {
     return;
   }
 
+  var objImg=document.getElementById("introimg"); 
+  objImg.src=imgArray[qIdx]; 
+  
   var q = document.querySelector(".qBox");
   q.innerHTML = qnaList[qIdx].q; // 질문 받아오기
 

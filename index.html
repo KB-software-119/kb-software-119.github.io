@@ -31,6 +31,8 @@
    <link rel="preconnect" href="https://fonts.gstatic.com">
    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="./css/default.css">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="./css/main.css">
    <link rel="stylesheet" href="./css/qna.css">
    <link rel="stylesheet" href="./css/animation.css">
@@ -53,7 +55,7 @@
    <!-- accordion 설정-->
 </head>
 
-<body onload="showImage()">
+<body>
    <div class="container">
       <section id="main" class="mx-auto">
          <div class="title_1">
@@ -61,21 +63,23 @@
          </div>
          <div class="wrap">
             <!--모바일환경에서 이미지파일이 해당 비율을 유지하도록 함-->
-            <img src="img/carbo.png" alt="mainImage" class="img-fluid">
+            <img src ="img/earth.png" alt="mainImage" class ="img_earth">
+            <!-- <img src="img/carbo.png" alt="mainImage" class="img-fluid"> -->
          </div>
          <div class ="all">
             
          <div class="title_2" >
-            <img src ="https://ecorelos.com/wp-content/uploads/2020/04/torn-border2upside.png" class="img_main" >
-            <br><br>환경MBTI<br>(탄소편)<br>
+            <!-- <img src ="https://ecorelos.com/wp-content/uploads/2020/04/torn-border2upside.png" class="img_main" > -->
+            <br>탄소 소비습관 유형검사<br>
          <div class="title_2_1">
             내 안에 탄소소비를 찾아보자..☆
-            <img src ="https://ecorelos.com/wp-content/uploads/2020/04/torn-border2upside.png" class="img_main2">
+            <!-- <img src ="https://ecorelos.com/wp-content/uploads/2020/04/torn-border2upside.png" class="img_main2"> -->
          </div>
          </div>
       </div>
-         <div class="d-grid gap-2 col-10 mx-auto">
-            <button type="button" class="btn-success" onclick="js:begin()">시작하기</button>
+         <!-- <div class="d-grid gap-2 col-10 mx-auto"> -->
+         <div>
+            <button type="button" class="btn_start" onclick="js:begin()">테스트 시작하기</button>
          </div>
       </section>
       <section id="qna" >
@@ -94,33 +98,15 @@
       </section>
       <section id="result" class="mx-auto">
          <div class="title_1">
-            <h1>검사 결과</h1>
-               
+            나의 소비습관은?   
             <div class="result_img">
 
             </div>
+            <span class="result_type"> </span>
          </div>
          <div class="total_result">
             연간 총 CO2 배출량 : <span id="total_resultt"></span>kg <br>
             필요 소나무 : <span id="total_needd"></span>그루<br>
-         </div>
-         <div class="action_plan">
-            <div class="traffic_plan">
-
-            </div>
-            <br>
-            <div class="air_plan">
-
-            </div>
-            <br>
-            <div class="electric_plan">
-
-            </div>
-            <br>
-            <div class="resource_plan">
-
-            </div>
-            <br>
          </div>
          <div class="container-fluid" style="min-height: calc(100vh - 136px);">
             <!-- 그룹 태그로 role과 aria-multiselectable를 설정한다. -->
@@ -240,6 +226,34 @@
             </div>
          </div>
 
+         <hr>
+         <br>
+         <div class="helpful">
+            당신에게 추천하는<br>
+            지구를 지키는 방법
+         </div>
+         <br>
+         <br>
+         <div class="action_plan">
+            <div class="traffic_plan">
+
+            </div>
+            <br>
+            <div class="air_plan">
+
+            </div>
+            <br>
+            <div class="electric_plan">
+
+            </div>
+            <br>
+            <div class="resource_plan">
+
+            </div>
+            <br>
+         </div>
+         <br>
+         <br>
          <button type="button" class="link_button"
             onclick="window.open('https://www.gihoo.or.kr/netzero/main/index.do')">탄소중립 더보기</button>
          <br>
@@ -257,7 +271,7 @@
          <br>
          <br>
          <br>
-         <img src="img/money.png" alt="My Image" width="400" height="400">
+         <img src="img/qna2_2.png" alt="My Image" width="400" height="400">
          <br>
          <br>
 
