@@ -440,6 +440,7 @@ function goResult() {
 }
 
 //실천방안에 관한 함수
+
 function showPlan(){
   var op = select[1]; // 자동차 사용여부 체크 
   
